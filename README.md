@@ -14,9 +14,13 @@
  <a href="#-demo">Demo</a>
 </p>
 
+<br/>
+
 ## 📑 About
 
 Brev.ly is a FullStack URL shortening application, developed as part of my **Pós Tech Developer 360** postgraduate course at **Rocketseat**. The project aims to create a platform that allows the registration, listing, and removal of shortened links, as well as generating reports with the number of accesses for each link. The application also ensures the correct redirection of shortened links to their original URLs, providing a practical and efficient solution to optimize link sharing and monitor the generated traffic.
+
+<br/>
 
 ## 🚀 Features
 
@@ -29,6 +33,8 @@ Brev.ly is a FullStack URL shortening application, developed as part of my **Pó
 - **Access reports:** generates reports with the number of accesses for each link, which can be exported to CSV format for detailed analysis.
 
 - **Redirection:** ensures that shortened links correctly redirect users to the original URLs.
+
+<br/>
 
 ## 🛠 Technologies
 
@@ -53,6 +59,10 @@ Brev.ly is a FullStack URL shortening application, developed as part of my **Pó
 
 - [Docker](https://www.docker.com/)
 
+<br/>
+
 ## 📦 How to Run
+
+<br/>
 
 ## 💻 Demo
