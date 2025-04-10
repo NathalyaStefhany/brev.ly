@@ -1,0 +1,12 @@
+{
+  "name": "brev.ly",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "prettier": "prettier --write .",
+    "prettier:check": "prettier --check ."
+  },
+  "devDependencies": {
+    "prettier": "3.5.3"
+  }
+}
