@@ -20,6 +20,10 @@ export default tseslint.config(
       ecmaVersion: 2020,
       globals: globals.browser,
       sourceType: 'module',
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: import.meta.dirname,
+      },
     },
     settings: {
       react: {
@@ -40,7 +44,15 @@ export default tseslint.config(
         { allowConstantExport: true },
       ],
       '@typescript-eslint/explicit-function-return-type': 'error',
+      '@typescript-eslint/no-duplicate-type-constituents': 'error',
       '@typescript-eslint/no-non-null-assertion': 'warn',
+      '@typescript-eslint/consistent-type-definitions': ['warn', 'type'],
+      '@typescript-eslint/explicit-module-boundary-types': 'warn',
+      '@typescript-eslint/no-inferrable-types': 'warn',
+      '@typescript-eslint/no-redundant-type-constituents': 'warn',
+      '@typescript-eslint/prefer-nullish-coalescing': 'warn',
+      '@typescript-eslint/require-await': 'warn',
+      '@typescript-eslint/switch-exhaustiveness-check': 'warn',
       'react/button-has-type': 'error',
       'react/checked-requires-onchange-or-readonly': 'error',
       'react/iframe-missing-sandbox': 'error',
