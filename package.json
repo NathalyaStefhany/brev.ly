@@ -2,11 +2,21 @@
   "name": "brev.ly",
   "private": true,
   "version": "1.0.0",
+  "type": "module",
   "scripts": {
     "prettier": "prettier --write .",
-    "prettier:check": "prettier --check ."
+    "prettier:check": "prettier --check .",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,json,css,scss,md}": ["npx prettier --check"],
+    "web/**/*.{js,jsx,ts,tsx}": ["npm --prefix web run lint:staged"]
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.8.0",
+    "@commitlint/config-conventional": "^19.8.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.1",
     "prettier": "3.5.3"
   }
 }
