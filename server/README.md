@@ -13,4 +13,4 @@
   - [ ] It must be possible to access the CSV via a CDN (Amazon S3, Cloudflare R2, etc.)
   - [ ] A random and unique name must be generated for the file
   - [ ] It must be possible to list the URLs in a performant way
-  - [ ] The CSV must include fields such as original URL, shortened URL, access count, and creation date.
+  - [ ] The CSV must include fields such as original URL, shortened URL, access count, and creation date

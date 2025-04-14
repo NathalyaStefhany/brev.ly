@@ -1,0 +1,10 @@
+node_modules
+build
+dist
+coverage
+assets
+web/public
+*lock.yaml
+.gitignore
+.prettierignore
+.husky
