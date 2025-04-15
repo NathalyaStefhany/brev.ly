@@ -35,4 +35,6 @@
   --text-xs: 0.625rem;
   --text-xs--line-height: 0.875rem;
   --text-xs--font-weight: 400;
+
+  --spacing: 0.125rem;
 }
