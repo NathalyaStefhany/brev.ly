@@ -1,0 +1,25 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Button tests > should display primary button correctly 1`] = `
+<div>
+  <button
+    class="flex flex-row gap-3 items-center justify-center cursor-pointer transition-all duration-300 disabled:cursor-not-allowed max-w-176 w-full bg-blue-base text-md text-white rounded-lg px-10 py-7.5 hover:not-disabled:bg-blue-dark disabled:opacity-50"
+    data-testid="button"
+    type="button"
+  >
+    Label
+  </button>
+</div>
+`;
+
+exports[`Button tests > should display secondary button correctly 1`] = `
+<div>
+  <button
+    class="flex flex-row gap-3 items-center justify-center cursor-pointer transition-all duration-300 disabled:cursor-not-allowed bg-gray-200 border border-gray-200 text-sm font-semibold text-gray-500 rounded-sm p-3.5 hover:not-disabled:border-blue-base disabled:opacity-50"
+    data-testid="button"
+    type="button"
+  >
+    Label
+  </button>
+</div>
+`;

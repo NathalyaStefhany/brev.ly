@@ -30,4 +30,24 @@ describe('Button tests', () => {
 
     expect(screen.queryByTestId('button-icon')).not.toBeInTheDocument();
   });
+
+  it('should display primary button correctly', () => {
+    const { container } = render(
+      <Button variant="primary" data-testid="button">
+        Label
+      </Button>,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should display secondary button correctly', () => {
+    const { container } = render(
+      <Button variant="secondary" data-testid="button">
+        Label
+      </Button>,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
 });
