@@ -31,7 +31,13 @@ export const Button: React.FC<ButtonProps> = ({
 }) => {
   return (
     <button type="button" className={buttonVariants({ variant })} {...props}>
-      {Icon && <Icon size="1rem" color="var(--color-gray-600)" />}
+      {Icon && (
+        <Icon
+          size="1rem"
+          color="var(--color-gray-600)"
+          data-testid="button-icon"
+        />
+      )}
 
       {children}
     </button>
