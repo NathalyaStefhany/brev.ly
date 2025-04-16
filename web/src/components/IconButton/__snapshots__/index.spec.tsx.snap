@@ -1,0 +1,22 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`IconButton tests > should render correctly 1`] = `
+<div>
+  <button
+    class="cursor-pointer transition-all duration-300 bg-gray-200 border border-gray-200 rounded-sm p-3.5 hover:not-disabled:border-blue-base disabled:opacity-50 disabled:cursor-not-allowed"
+    type="button"
+  >
+    <svg
+      fill="var(--color-gray-600)"
+      height="1rem"
+      viewBox="0 0 256 256"
+      width="1rem"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z"
+      />
+    </svg>
+  </button>
+</div>
+`;
