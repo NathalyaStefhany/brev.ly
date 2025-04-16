@@ -1,0 +1,69 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Input tests > should display input correctly 1`] = `
+<div>
+  <div
+    class="max-w-176 w-full flex flex-col-reverse gap-4"
+  >
+    <input
+      aria-describedby="input-test-error"
+      aria-invalid="false"
+      class="peer text-md text-gray-600 font-normal border border-gray-300 caret-blue-base rounded-lg px-8 py-7 placeholder:text-gray-400 focus:outline-blue-base"
+      id="input-test"
+      placeholder="Placeholder"
+      type="text"
+    />
+    <label
+      class="text-xs text-gray-500 uppercase focus:font-bold peer-focus:font-bold peer-focus:text-blue-base"
+      for="input-test"
+    >
+      Title
+    </label>
+  </div>
+</div>
+`;
+
+exports[`Input tests > should display input with error correctly 1`] = `
+<div>
+  <div
+    class="max-w-176 w-full flex flex-col-reverse gap-4"
+  >
+    <div
+      class="flex flex-row items-center gap-4"
+    >
+      <svg
+        fill="var(--color-danger)"
+        height="1rem"
+        viewBox="0 0 256 256"
+        width="1rem"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M236.8,188.09,149.35,36.22h0a24.76,24.76,0,0,0-42.7,0L19.2,188.09a23.51,23.51,0,0,0,0,23.72A24.35,24.35,0,0,0,40.55,224h174.9a24.35,24.35,0,0,0,21.33-12.19A23.51,23.51,0,0,0,236.8,188.09ZM222.93,203.8a8.5,8.5,0,0,1-7.48,4.2H40.55a8.5,8.5,0,0,1-7.48-4.2,7.59,7.59,0,0,1,0-7.72L120.52,44.21a8.75,8.75,0,0,1,15,0l87.45,151.87A7.59,7.59,0,0,1,222.93,203.8ZM120,144V104a8,8,0,0,1,16,0v40a8,8,0,0,1-16,0Zm20,36a12,12,0,1,1-12-12A12,12,0,0,1,140,180Z"
+        />
+      </svg>
+      <span
+        class="text-sm text-gray-500"
+        data-testid="input-error"
+        id="input-test-error"
+      >
+        Error message
+      </span>
+    </div>
+    <input
+      aria-describedby="input-test-error"
+      aria-invalid="true"
+      class="peer text-md text-gray-600 font-normal border border-gray-300 caret-blue-base rounded-lg px-8 py-7 placeholder:text-gray-400 focus:outline-danger"
+      id="input-test"
+      placeholder="Placeholder"
+      type="text"
+    />
+    <label
+      class="text-xs text-gray-500 uppercase focus:font-bold peer-focus:font-bold peer-focus:text-danger"
+      for="input-test"
+    >
+      Title
+    </label>
+  </div>
+</div>
+`;
