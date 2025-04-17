@@ -1,4 +1,5 @@
 import { defineConfig, coverageConfigDefaults } from 'vitest/config';
+import path from 'path';
 
 export default defineConfig({
   test: {
@@ -17,6 +18,9 @@ export default defineConfig({
         functions: 80,
         lines: 80,
       },
+    },
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
     },
   },
 });
