@@ -1,9 +1,11 @@
-name: ESLint and Tests
+name: Web - ESLint and Tests
 
 on:
   pull_request:
     branches:
       - dev
+    paths: 
+      - web/**
 
 jobs:
   eslint-tests:
@@ -31,12 +33,15 @@ jobs:
 
       - name: Install dependencies
         id: install-dependencies
+        working-directory: ./web
         run: pnpm install
 
       - name: Check ESLint
         id: check-eslint
+        working-directory: ./web
         run: pnpm run lint
 
       - name: Run tests
         id: run-tests
+        working-directory: ./web
         run: pnpm run test:coverage
