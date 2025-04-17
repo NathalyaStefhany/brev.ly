@@ -11,7 +11,7 @@
     "preview": "vite preview",
     "test": "vitest --silent",
     "test:ui": "vitest --silent --ui",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage --silent"
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.7",
