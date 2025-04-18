@@ -1,10 +1,21 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import {
+  act,
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+} from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import { NewLink } from '@/pages/Home/components/NewLink';
 
 describe('New Link tests', () => {
-  it('should render correctly', () => {
-    const { container } = render(<NewLink />);
+  it('should render correctly', async () => {
+    let container: HTMLElement = document.createElement('div');
+
+    // eslint-disable-next-line @typescript-eslint/require-await
+    await act(async () => {
+      container = render(<NewLink />).container;
+    });
 
     expect(container).toMatchSnapshot();
   });
