@@ -69,7 +69,7 @@ export const NewLink: React.FC = () => {
         <Input
           id="input-shortened-link"
           label="Link Encurtado"
-          placeholder="brev.ly/"
+          fixedPlaceholder="brev.ly/"
           error={errors.shortenedLink?.message}
           data-testid="input-shortened-link"
           {...register('shortenedLink')}

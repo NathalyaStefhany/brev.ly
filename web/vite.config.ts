@@ -13,6 +13,9 @@ export default defineConfig(({ mode }) => {
     plugins: [react(), tailwindcss()],
     server: {
       port: env.VITE_PORT,
+      watch: {
+        ignored: ['**/*.spec.ts', '**/*.spec.tsx'],
+      },
     },
     resolve: {
       alias: {
