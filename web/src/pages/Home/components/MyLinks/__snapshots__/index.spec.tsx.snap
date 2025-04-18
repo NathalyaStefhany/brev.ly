@@ -1,0 +1,62 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`My Links testes > should render correctly 1`] = `
+<div>
+  <div
+    class="max-w-190 w-full md:max-w-290 md:min-w-190 h-fit flex flex-col flex-1 gap-10 bg-gray-100 rounded-lg p-16"
+  >
+    <div
+      class="flex flex-row items-center justify-between"
+    >
+      <h2
+        class="text-lg text-gray-600"
+      >
+        Meus links
+      </h2>
+      <button
+        class="flex flex-row gap-3 items-center justify-center cursor-pointer transition-all duration-300 disabled:cursor-not-allowed bg-gray-200 border border-gray-200 text-sm font-semibold text-gray-500 rounded-sm p-3.5 hover:not-disabled:border-blue-base disabled:opacity-50"
+        disabled=""
+        type="button"
+      >
+        <svg
+          data-testid="button-icon"
+          fill="var(--color-gray-600)"
+          height="1rem"
+          viewBox="0 0 256 256"
+          width="1rem"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M224,144v64a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8V144a8,8,0,0,1,16,0v56H208V144a8,8,0,0,1,16,0Zm-101.66,5.66a8,8,0,0,0,11.32,0l40-40a8,8,0,0,0-11.32-11.32L136,124.69V32a8,8,0,0,0-16,0v92.69L93.66,98.34a8,8,0,0,0-11.32,11.32Z"
+          />
+        </svg>
+        Baixar CSV
+      </button>
+    </div>
+    <div
+      class="border-t border-gray-200"
+    >
+      <div
+        class="flex flex-col items-center justify-center gap-6 mt-8 mb-12"
+      >
+        <svg
+          fill="var(--color-gray-400)"
+          height="2rem"
+          viewBox="0 0 256 256"
+          width="2rem"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M240,88.23a54.43,54.43,0,0,1-16,37L189.25,160a54.27,54.27,0,0,1-38.63,16h-.05A54.63,54.63,0,0,1,96,119.84a8,8,0,0,1,16,.45A38.62,38.62,0,0,0,150.58,160h0a38.39,38.39,0,0,0,27.31-11.31l34.75-34.75a38.63,38.63,0,0,0-54.63-54.63l-11,11A8,8,0,0,1,135.7,59l11-11A54.65,54.65,0,0,1,224,48,54.86,54.86,0,0,1,240,88.23ZM109,185.66l-11,11A38.41,38.41,0,0,1,70.6,208h0a38.63,38.63,0,0,1-27.29-65.94L78,107.31A38.63,38.63,0,0,1,144,135.71a8,8,0,0,0,16,.45A54.86,54.86,0,0,0,144,96a54.65,54.65,0,0,0-77.27,0L32,130.75A54.62,54.62,0,0,0,70.56,224h0a54.28,54.28,0,0,0,38.64-16l11-11A8,8,0,0,0,109,185.66Z"
+          />
+        </svg>
+        <p
+          class="text-xs text-gray-500 uppercase"
+        >
+          Ainda não existem links cadastrados
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;

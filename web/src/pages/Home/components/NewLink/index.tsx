@@ -52,9 +52,9 @@ export const NewLink: React.FC = () => {
   return (
     <form
       onSubmit={handleSubmit(handleSaveLink)}
-      className="max-w-190 min-w-120 w-full flex flex-col flex-1 gap-12 bg-gray-100 rounded-lg p-16"
+      className="max-w-190 w-full md:min-w-145 flex flex-col flex-1 gap-12 bg-gray-100 rounded-lg p-16"
     >
-      <h3 className="text-lg text-gray-600">Novo link</h3>
+      <h2 className="text-lg text-gray-600">Novo link</h2>
 
       <div className="flex flex-col gap-8">
         <Input
