@@ -47,7 +47,7 @@ export const Input: React.FC<InputProps> = ({ id, label, error, ...props }) => {
           <span
             id={`${id}-error`}
             className="text-sm text-gray-500"
-            data-testid="input-error"
+            data-testid={`${id}-error`}
           >
             {error}
           </span>

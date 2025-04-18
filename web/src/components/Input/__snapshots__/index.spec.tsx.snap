@@ -44,7 +44,7 @@ exports[`Input tests > should display input with error correctly 1`] = `
       </svg>
       <span
         class="text-sm text-gray-500"
-        data-testid="input-error"
+        data-testid="input-test-error"
         id="input-test-error"
       >
         Error message

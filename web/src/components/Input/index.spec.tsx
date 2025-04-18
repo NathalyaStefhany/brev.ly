@@ -20,8 +20,8 @@ describe('Input tests', () => {
       />,
     );
 
-    expect(screen.getByTestId('input-error')).toBeInTheDocument();
-    expect(screen.getByTestId('input-error')).toHaveTextContent(
+    expect(screen.getByTestId('input-test-error')).toBeInTheDocument();
+    expect(screen.getByTestId('input-test-error')).toHaveTextContent(
       'Error message',
     );
   });
@@ -29,7 +29,7 @@ describe('Input tests', () => {
   it('should not display error', () => {
     render(<Input id="input-test" label="Title" placeholder="Placeholder" />);
 
-    expect(screen.queryByTestId('input-error')).not.toBeInTheDocument();
+    expect(screen.queryByTestId('input-test-error')).not.toBeInTheDocument();
   });
 
   it('should display input correctly', () => {

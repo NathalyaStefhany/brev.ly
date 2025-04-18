@@ -1,0 +1,451 @@
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { describe, expect, it } from 'vitest';
+import { NewLink } from '@/pages/Home/components/NewLink';
+
+describe('New Link tests', () => {
+  it('should render correctly', () => {
+    const { container } = render(<NewLink />);
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should display input errors when try to save link but the fields are empty', async () => {
+    render(<NewLink />);
+
+    fireEvent.click(screen.getByTestId('button-save-link'));
+
+    await waitFor(() => {
+      expect(screen.getByTestId('input-original-link-error')).toHaveTextContent(
+        'Informe uma url válida.',
+      );
+    });
+
+    expect(screen.getByTestId('input-shortened-link-error')).toHaveTextContent(
+      'Informe uma url minúscula e sem espaço/caracter especial.',
+    );
+  });
+
+  it('should display original link input error when value is invalid (example.com)', async () => {
+    render(<NewLink />);
+
+    fireEvent.change(screen.getByTestId('input-original-link'), {
+      target: { value: 'example.com' },
+    });
+
+    expect(screen.getByTestId('input-original-link')).toHaveValue(
+      'example.com',
+    );
+
+    fireEvent.click(screen.getByTestId('button-save-link'));
+
+    await waitFor(() => {
+      expect(
+        screen.getByTestId('input-original-link-error'),
+      ).toBeInTheDocument();
+    });
+  });
+
+  it('should display original link input error when value is invalid (https://)', async () => {
+    render(<NewLink />);
+
+    fireEvent.change(screen.getByTestId('input-original-link'), {
+      target: { value: 'https://' },
+    });
+
+    expect(screen.getByTestId('input-original-link')).toHaveValue('https://');
+
+    fireEvent.click(screen.getByTestId('button-save-link'));
+
+    await waitFor(() => {
+      expect(
+        screen.getByTestId('input-original-link-error'),
+      ).toBeInTheDocument();
+    });
+  });
+
+  it('should display original link input error when value is invalid (https://example@)', async () => {
+    render(<NewLink />);
+
+    fireEvent.change(screen.getByTestId('input-original-link'), {
+      target: { value: 'https://example@' },
+    });
+
+    expect(screen.getByTestId('input-original-link')).toHaveValue(
+      'https://example@',
+    );
+
+    fireEvent.click(screen.getByTestId('button-save-link'));
+
+    await waitFor(() => {
+      expect(
+        screen.getByTestId('input-original-link-error'),
+      ).toBeInTheDocument();
+    });
+  });
+
+  it('should display original link input error when value is invalid (www.example)', async () => {
+    render(<NewLink />);
+
+    fireEvent.change(screen.getByTestId('input-original-link'), {
+      target: { value: 'www.example' },
+    });
+
+    expect(screen.getByTestId('input-original-link')).toHaveValue(
+      'www.example',
+    );
+
+    fireEvent.click(screen.getByTestId('button-save-link'));
+
+    await waitFor(() => {
+      expect(
+        screen.getByTestId('input-original-link-error'),
+      ).toBeInTheDocument();
+    });
+  });
+
+  it('should display original link input error when value is invalid (www.example.com.br.test)', async () => {
+    render(<NewLink />);
+
+    fireEvent.change(screen.getByTestId('input-original-link'), {
+      target: { value: 'www.example.com.br.test' },
+    });
+
+    expect(screen.getByTestId('input-original-link')).toHaveValue(
+      'www.example.com.br.test',
+    );
+
+    fireEvent.click(screen.getByTestId('button-save-link'));
+
+    await waitFor(() => {
+      expect(
+        screen.getByTestId('input-original-link-error'),
+      ).toBeInTheDocument();
+    });
+  });
+
+  it('should display original link input error when value is invalid (www.example.)', async () => {
+    render(<NewLink />);
+
+    fireEvent.change(screen.getByTestId('input-original-link'), {
+      target: { value: 'www.example.' },
+    });
+
+    expect(screen.getByTestId('input-original-link')).toHaveValue(
+      'www.example.',
+    );
+
+    fireEvent.click(screen.getByTestId('button-save-link'));
+
+    await waitFor(() => {
+      expect(
+        screen.getByTestId('input-original-link-error'),
+      ).toBeInTheDocument();
+    });
+  });
+
+  it('should not display original link input error when value is valid (https://example.com)', async () => {
+    render(<NewLink />);
+
+    fireEvent.change(screen.getByTestId('input-original-link'), {
+      target: { value: 'https://example.com' },
+    });
+
+    expect(screen.getByTestId('input-original-link')).toHaveValue(
+      'https://example.com',
+    );
+
+    fireEvent.click(screen.getByTestId('button-save-link'));
+
+    await waitFor(() => {
+      expect(
+        screen.getByTestId('input-shortened-link-error'),
+      ).toBeInTheDocument();
+    });
+
+    expect(
+      screen.queryByTestId('input-original-link-error'),
+    ).not.toBeInTheDocument();
+  });
+
+  it('should not display original link input error when value is valid (http://example.com)', async () => {
+    render(<NewLink />);
+
+    fireEvent.change(screen.getByTestId('input-original-link'), {
+      target: { value: 'http://example.com' },
+    });
+
+    expect(screen.getByTestId('input-original-link')).toHaveValue(
+      'http://example.com',
+    );
+
+    fireEvent.click(screen.getByTestId('button-save-link'));
+
+    await waitFor(() => {
+      expect(
+        screen.getByTestId('input-shortened-link-error'),
+      ).toBeInTheDocument();
+    });
+
+    expect(
+      screen.queryByTestId('input-original-link-error'),
+    ).not.toBeInTheDocument();
+  });
+
+  it('should not display original link input error when value is valid (https://www.example.com)', async () => {
+    render(<NewLink />);
+
+    fireEvent.change(screen.getByTestId('input-original-link'), {
+      target: { value: 'https://www.example.com' },
+    });
+
+    expect(screen.getByTestId('input-original-link')).toHaveValue(
+      'https://www.example.com',
+    );
+
+    fireEvent.click(screen.getByTestId('button-save-link'));
+
+    await waitFor(() => {
+      expect(
+        screen.getByTestId('input-shortened-link-error'),
+      ).toBeInTheDocument();
+    });
+
+    expect(
+      screen.queryByTestId('input-original-link-error'),
+    ).not.toBeInTheDocument();
+  });
+
+  it('should not display original link input error when value is valid (https://example.com.br)', async () => {
+    render(<NewLink />);
+
+    fireEvent.change(screen.getByTestId('input-original-link'), {
+      target: { value: 'https://example.com.br' },
+    });
+
+    expect(screen.getByTestId('input-original-link')).toHaveValue(
+      'https://example.com.br',
+    );
+
+    fireEvent.click(screen.getByTestId('button-save-link'));
+
+    await waitFor(() => {
+      expect(
+        screen.getByTestId('input-shortened-link-error'),
+      ).toBeInTheDocument();
+    });
+
+    expect(
+      screen.queryByTestId('input-original-link-error'),
+    ).not.toBeInTheDocument();
+  });
+
+  it('should not display original link input error when value is valid (www.example.com)', async () => {
+    render(<NewLink />);
+
+    fireEvent.change(screen.getByTestId('input-original-link'), {
+      target: { value: 'www.example.com' },
+    });
+
+    expect(screen.getByTestId('input-original-link')).toHaveValue(
+      'www.example.com',
+    );
+
+    fireEvent.click(screen.getByTestId('button-save-link'));
+
+    await waitFor(() => {
+      expect(
+        screen.getByTestId('input-shortened-link-error'),
+      ).toBeInTheDocument();
+    });
+
+    expect(
+      screen.queryByTestId('input-original-link-error'),
+    ).not.toBeInTheDocument();
+  });
+
+  it('should not display original link input error when value is valid (www.example.com.br)', async () => {
+    render(<NewLink />);
+
+    fireEvent.change(screen.getByTestId('input-original-link'), {
+      target: { value: 'www.example.com.br' },
+    });
+
+    expect(screen.getByTestId('input-original-link')).toHaveValue(
+      'www.example.com.br',
+    );
+
+    fireEvent.click(screen.getByTestId('button-save-link'));
+
+    await waitFor(() => {
+      expect(
+        screen.getByTestId('input-shortened-link-error'),
+      ).toBeInTheDocument();
+    });
+
+    expect(
+      screen.queryByTestId('input-original-link-error'),
+    ).not.toBeInTheDocument();
+  });
+
+  it('should display shortened link input error when value is invalid (EXAMPLE)', async () => {
+    render(<NewLink />);
+
+    fireEvent.change(screen.getByTestId('input-shortened-link'), {
+      target: { value: 'EXAMPLE' },
+    });
+
+    expect(screen.getByTestId('input-shortened-link')).toHaveValue('EXAMPLE');
+
+    fireEvent.click(screen.getByTestId('button-save-link'));
+
+    await waitFor(() => {
+      expect(
+        screen.getByTestId('input-shortened-link-error'),
+      ).toBeInTheDocument();
+    });
+  });
+
+  it('should display shortened link input error when value is invalid (example.)', async () => {
+    render(<NewLink />);
+
+    fireEvent.change(screen.getByTestId('input-shortened-link'), {
+      target: { value: 'example.' },
+    });
+
+    expect(screen.getByTestId('input-shortened-link')).toHaveValue('example.');
+
+    fireEvent.click(screen.getByTestId('button-save-link'));
+
+    await waitFor(() => {
+      expect(
+        screen.getByTestId('input-shortened-link-error'),
+      ).toBeInTheDocument();
+    });
+  });
+
+  it('should display shortened link input error when value is invalid (example )', async () => {
+    render(<NewLink />);
+
+    fireEvent.change(screen.getByTestId('input-shortened-link'), {
+      target: { value: 'example ' },
+    });
+
+    expect(screen.getByTestId('input-shortened-link')).toHaveValue('example ');
+
+    fireEvent.click(screen.getByTestId('button-save-link'));
+
+    await waitFor(() => {
+      expect(
+        screen.getByTestId('input-shortened-link-error'),
+      ).toBeInTheDocument();
+    });
+  });
+
+  it('should not display shortened link input error when value is valid (example)', async () => {
+    render(<NewLink />);
+
+    fireEvent.change(screen.getByTestId('input-shortened-link'), {
+      target: { value: 'example' },
+    });
+
+    expect(screen.getByTestId('input-shortened-link')).toHaveValue('example');
+
+    fireEvent.click(screen.getByTestId('button-save-link'));
+
+    await waitFor(() => {
+      expect(
+        screen.getByTestId('input-original-link-error'),
+      ).toBeInTheDocument();
+    });
+
+    expect(
+      screen.queryByTestId('input-shortened-link-error'),
+    ).not.toBeInTheDocument();
+  });
+
+  it('should not display shortened link input error when value is valid (example-1)', async () => {
+    render(<NewLink />);
+
+    fireEvent.change(screen.getByTestId('input-shortened-link'), {
+      target: { value: 'example-1' },
+    });
+
+    expect(screen.getByTestId('input-shortened-link')).toHaveValue('example-1');
+
+    fireEvent.click(screen.getByTestId('button-save-link'));
+
+    await waitFor(() => {
+      expect(
+        screen.getByTestId('input-original-link-error'),
+      ).toBeInTheDocument();
+    });
+
+    expect(
+      screen.queryByTestId('input-shortened-link-error'),
+    ).not.toBeInTheDocument();
+  });
+
+  it('should disappear with the original input error when entering a valid value', async () => {
+    render(<NewLink />);
+
+    fireEvent.click(screen.getByTestId('button-save-link'));
+
+    await waitFor(() => {
+      expect(
+        screen.getByTestId('input-original-link-error'),
+      ).toBeInTheDocument();
+    });
+
+    fireEvent.change(screen.getByTestId('input-original-link'), {
+      target: { value: 'www.example-1.com' },
+    });
+
+    await waitFor(() => {
+      expect(
+        screen.queryByTestId('input-original-link-error'),
+      ).not.toBeInTheDocument();
+    });
+
+    fireEvent.change(screen.getByTestId('input-original-link'), {
+      target: { value: 'www' },
+    });
+
+    await waitFor(() => {
+      expect(
+        screen.getByTestId('input-original-link-error'),
+      ).toBeInTheDocument();
+    });
+  });
+
+  it('should disappear with the shortened input error when entering a valid value', async () => {
+    render(<NewLink />);
+
+    fireEvent.click(screen.getByTestId('button-save-link'));
+
+    await waitFor(() => {
+      expect(
+        screen.getByTestId('input-shortened-link-error'),
+      ).toBeInTheDocument();
+    });
+
+    fireEvent.change(screen.getByTestId('input-shortened-link'), {
+      target: { value: 'example' },
+    });
+
+    await waitFor(() => {
+      expect(
+        screen.queryByTestId('input-shortened-link-error'),
+      ).not.toBeInTheDocument();
+    });
+
+    fireEvent.change(screen.getByTestId('input-shortened-link'), {
+      target: { value: 'exâmple' },
+    });
+
+    await waitFor(() => {
+      expect(
+        screen.getByTestId('input-shortened-link-error'),
+      ).toBeInTheDocument();
+    });
+  });
+});
