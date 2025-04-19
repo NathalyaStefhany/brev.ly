@@ -8,7 +8,7 @@ exports[`Input tests > should display input correctly 1`] = `
     <input
       aria-describedby="input-test-error"
       aria-invalid="false"
-      class="peer text-md text-gray-600 font-normal border border-gray-300 caret-blue-base rounded-lg py-7 placeholder:text-gray-400 focus:outline-blue-base"
+      class="peer z-1 text-md text-gray-600 font-normal border border-gray-300 caret-blue-base rounded-lg py-7 placeholder:text-gray-400 focus:outline-blue-base"
       id="input-test"
       placeholder="Placeholder"
       style="padding-left: calc(1rem); padding-right: 1rem;"
@@ -54,7 +54,7 @@ exports[`Input tests > should display input with error correctly 1`] = `
     <input
       aria-describedby="input-test-error"
       aria-invalid="true"
-      class="peer text-md text-gray-600 font-normal border border-gray-300 caret-blue-base rounded-lg py-7 placeholder:text-gray-400 focus:outline-danger"
+      class="peer z-1 text-md text-gray-600 font-normal border border-gray-300 caret-blue-base rounded-lg py-7 placeholder:text-gray-400 focus:outline-danger"
       id="input-test"
       placeholder="Placeholder"
       style="padding-left: calc(1rem); padding-right: 1rem;"
@@ -78,7 +78,7 @@ exports[`Input tests > should display input with fixed placeholder correctly 1`]
     <input
       aria-describedby="input-test-error"
       aria-invalid="false"
-      class="peer text-md text-gray-600 font-normal border border-gray-300 caret-blue-base rounded-lg py-7 placeholder:text-gray-400 focus:outline-blue-base"
+      class="peer z-1 text-md text-gray-600 font-normal border border-gray-300 caret-blue-base rounded-lg py-7 placeholder:text-gray-400 focus:outline-blue-base"
       id="input-test"
       style="padding-left: calc(1.6875rem); padding-right: 1rem;"
       type="text"

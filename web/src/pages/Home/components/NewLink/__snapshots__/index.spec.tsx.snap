@@ -19,7 +19,7 @@ exports[`New Link tests > should render correctly 1`] = `
         <input
           aria-describedby="input-original-link-error"
           aria-invalid="false"
-          class="peer text-md text-gray-600 font-normal border border-gray-300 caret-blue-base rounded-lg py-7 placeholder:text-gray-400 focus:outline-blue-base"
+          class="peer z-1 text-md text-gray-600 font-normal border border-gray-300 caret-blue-base rounded-lg py-7 placeholder:text-gray-400 focus:outline-blue-base"
           data-testid="input-original-link"
           id="input-original-link"
           name="originalLink"
@@ -40,7 +40,7 @@ exports[`New Link tests > should render correctly 1`] = `
         <input
           aria-describedby="input-shortened-link-error"
           aria-invalid="false"
-          class="peer text-md text-gray-600 font-normal border border-gray-300 caret-blue-base rounded-lg py-7 placeholder:text-gray-400 focus:outline-blue-base"
+          class="peer z-1 text-md text-gray-600 font-normal border border-gray-300 caret-blue-base rounded-lg py-7 placeholder:text-gray-400 focus:outline-blue-base"
           data-testid="input-shortened-link"
           id="input-shortened-link"
           name="shortenedLink"

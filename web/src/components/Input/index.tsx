@@ -18,7 +18,7 @@ const labelVariants = tv({
 });
 
 const inputVariants = tv({
-  base: 'peer text-md text-gray-600 font-normal border border-gray-300 caret-blue-base rounded-lg py-7 placeholder:text-gray-400',
+  base: 'peer z-1 text-md text-gray-600 font-normal border border-gray-300 caret-blue-base rounded-lg py-7 placeholder:text-gray-400',
   variants: {
     intent: {
       default: 'focus:outline-blue-base',
