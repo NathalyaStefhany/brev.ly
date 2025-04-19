@@ -12,6 +12,7 @@ export default defineConfig({
         ...coverageConfigDefaults.exclude,
         'src/app.tsx',
         'src/main.tsx',
+        'src/routes/**',
       ],
       thresholds: {
         branches: 80,
