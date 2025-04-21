@@ -6,7 +6,10 @@ import { MyLinks } from '@/pages/Home/components/MyLinks';
 
 export const Home: React.FC = () => {
   return (
-    <main className="min-h-screen flex flex-col items-center py-16 px-6 bg-gray-200">
+    <main
+      className="min-h-screen flex flex-col items-center py-16 px-6 bg-gray-200"
+      data-testid="container-home-page"
+    >
       <div className="w-full md:max-w-490 md:w-[calc(100vw - 1.5rem)] md:mt-25 flex flex-col items-center md:items-start gap-16">
         <img
           src={logo}

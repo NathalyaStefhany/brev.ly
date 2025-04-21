@@ -4,7 +4,10 @@ import notFoundImage from '@/assets/404.svg';
 
 export const NotFound: React.FC = () => {
   return (
-    <main className="w-screen min-h-screen flex flex-row items-center justify-center p-6 bg-gray-200">
+    <main
+      className="w-screen min-h-screen flex flex-row items-center justify-center p-6 bg-gray-200"
+      data-testid="container-not-found"
+    >
       <div className="max-w-290 w-fit h-fit flex flex-col gap-12 items-center text-center bg-gray-100 rounded-lg px-24 py-32">
         <img
           src={notFoundImage}
@@ -17,7 +20,11 @@ export const NotFound: React.FC = () => {
         <p className="text-md text-gray-500">
           O link que você está tentando acessar não existe, foi removido ou é
           uma URL inválida. Saiba mais em{' '}
-          <a href="/" className="text-blue-base underline">
+          <a
+            href="/"
+            className="text-blue-base underline"
+            data-testid="link-brev-ly"
+          >
             brev.ly
           </a>
           .
