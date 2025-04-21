@@ -3,7 +3,7 @@
 exports[`New Link tests > should render correctly 1`] = `
 <div>
   <form
-    class="max-w-190 w-full md:min-w-145 flex flex-col flex-1 gap-12 bg-gray-100 rounded-lg p-16"
+    class="max-w-190 w-full md:min-w-145 flex flex-col flex-1 gap-10 md:gap-12 bg-gray-100 rounded-lg p-12 md:p-16"
   >
     <h2
       class="text-lg text-gray-600"
