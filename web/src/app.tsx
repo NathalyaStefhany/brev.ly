@@ -1,7 +1,9 @@
 import React from 'react';
 
-import { RouterProvider } from 'react-router';
-import { router } from '@/routes';
+import { createBrowserRouter, RouterProvider } from 'react-router';
+import { routesConfig } from '@/routes';
+
+const router = createBrowserRouter(routesConfig);
 
 export const App: React.FC = () => {
   return <RouterProvider router={router} />;
