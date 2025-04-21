@@ -1,5 +1,6 @@
+import { getTextWidth } from '@/utils/getTextWidth';
 import { Warning } from '@phosphor-icons/react';
-import React, { ComponentProps } from 'react';
+import React, { ComponentProps, useEffect, useState } from 'react';
 
 import { tv } from 'tailwind-variants';
 
@@ -17,7 +18,7 @@ const labelVariants = tv({
 });
 
 const inputVariants = tv({
-  base: 'peer text-md text-gray-600 font-normal border border-gray-300 caret-blue-base rounded-lg px-8 py-7 placeholder:text-gray-400',
+  base: 'peer z-1 text-md text-gray-600 font-normal border border-gray-300 caret-blue-base rounded-lg py-7 placeholder:text-gray-400',
   variants: {
     intent: {
       default: 'focus:outline-blue-base',
@@ -32,14 +33,33 @@ const inputVariants = tv({
 type InputProps = ComponentProps<'input'> & {
   id: string;
   label: string;
+  fixedPlaceholder?: string;
   error?: string;
 };
 
-export const Input: React.FC<InputProps> = ({ id, label, error, ...props }) => {
+export const Input: React.FC<InputProps> = ({
+  id,
+  label,
+  error,
+  fixedPlaceholder,
+  ...props
+}) => {
+  const [fixedPlaceholderWidth, setFixedPlaceholderWidth] = useState(0);
+
+  useEffect(() => {
+    document.fonts.ready.then(() => {
+      const width = fixedPlaceholder
+        ? getTextWidth(fixedPlaceholder, '14px Open Sans')
+        : 0;
+
+      setFixedPlaceholderWidth(width);
+    });
+  }, [fixedPlaceholder]);
+
   const intent = error ? 'error' : 'default';
 
   return (
-    <div className="max-w-176 w-full flex flex-col-reverse gap-4">
+    <div className="relative max-w-176 w-full flex flex-col-reverse gap-4">
       {error && (
         <div className="flex flex-row items-center gap-4">
           <Warning size="1rem" color="var(--color-danger)" />
@@ -47,7 +67,7 @@ export const Input: React.FC<InputProps> = ({ id, label, error, ...props }) => {
           <span
             id={`${id}-error`}
             className="text-sm text-gray-500"
-            data-testid="input-error"
+            data-testid={`${id}-error`}
           >
             {error}
           </span>
@@ -60,8 +80,21 @@ export const Input: React.FC<InputProps> = ({ id, label, error, ...props }) => {
         aria-invalid={!!error}
         aria-describedby={`${id}-error`}
         className={inputVariants({ intent })}
+        style={{
+          paddingLeft: `calc(${fixedPlaceholderWidth / 16}rem + 1rem)`,
+          paddingRight: '1rem',
+        }}
         {...props}
       />
+
+      {fixedPlaceholder && (
+        <span
+          data-testid={`${id}-fixed-placeholder`}
+          className="absolute top-18.5 left-8.5 text-md text-gray-400 font-normal"
+        >
+          {fixedPlaceholder}
+        </span>
+      )}
 
       <label htmlFor={id} className={labelVariants({ intent })}>
         {label}

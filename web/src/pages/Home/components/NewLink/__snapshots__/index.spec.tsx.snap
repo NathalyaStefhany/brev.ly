@@ -1,0 +1,73 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`New Link tests > should render correctly 1`] = `
+<div>
+  <form
+    class="max-w-190 w-full md:min-w-145 flex flex-col flex-1 gap-12 bg-gray-100 rounded-lg p-16"
+  >
+    <h2
+      class="text-lg text-gray-600"
+    >
+      Novo link
+    </h2>
+    <div
+      class="flex flex-col gap-8"
+    >
+      <div
+        class="relative max-w-176 w-full flex flex-col-reverse gap-4"
+      >
+        <input
+          aria-describedby="input-original-link-error"
+          aria-invalid="false"
+          class="peer z-1 text-md text-gray-600 font-normal border border-gray-300 caret-blue-base rounded-lg py-7 placeholder:text-gray-400 focus:outline-blue-base"
+          data-testid="input-original-link"
+          id="input-original-link"
+          name="originalLink"
+          placeholder="www.exemplo.com.br"
+          style="padding-left: calc(1rem); padding-right: 1rem;"
+          type="text"
+        />
+        <label
+          class="text-xs text-gray-500 uppercase focus:font-bold peer-focus:font-bold peer-focus:text-blue-base"
+          for="input-original-link"
+        >
+          Link Original
+        </label>
+      </div>
+      <div
+        class="relative max-w-176 w-full flex flex-col-reverse gap-4"
+      >
+        <input
+          aria-describedby="input-shortened-link-error"
+          aria-invalid="false"
+          class="peer z-1 text-md text-gray-600 font-normal border border-gray-300 caret-blue-base rounded-lg py-7 placeholder:text-gray-400 focus:outline-blue-base"
+          data-testid="input-shortened-link"
+          id="input-shortened-link"
+          name="shortenedLink"
+          style="padding-left: calc(1.5rem); padding-right: 1rem;"
+          type="text"
+        />
+        <span
+          class="absolute top-18.5 left-8.5 text-md text-gray-400 font-normal"
+          data-testid="input-shortened-link-fixed-placeholder"
+        >
+          brev.ly/
+        </span>
+        <label
+          class="text-xs text-gray-500 uppercase focus:font-bold peer-focus:font-bold peer-focus:text-blue-base"
+          for="input-shortened-link"
+        >
+          Link Encurtado
+        </label>
+      </div>
+    </div>
+    <button
+      class="flex flex-row gap-3 items-center justify-center cursor-pointer transition-all duration-300 disabled:cursor-not-allowed max-w-176 w-full bg-blue-base text-md text-white rounded-lg px-10 py-7.5 hover:not-disabled:bg-blue-dark disabled:opacity-50"
+      data-testid="button-save-link"
+      type="submit"
+    >
+      Salvar link
+    </button>
+  </form>
+</div>
+`;
