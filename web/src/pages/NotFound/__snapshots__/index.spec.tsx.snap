@@ -4,6 +4,7 @@ exports[`Not found page tests > should render correctly 1`] = `
 <div>
   <main
     class="w-screen min-h-screen flex flex-row items-center justify-center p-6 bg-gray-200"
+    data-testid="container-not-found"
   >
     <div
       class="max-w-290 w-fit h-fit flex flex-col gap-12 items-center text-center bg-gray-100 rounded-lg px-24 py-32"
