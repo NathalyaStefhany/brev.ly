@@ -10,7 +10,8 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,json,css,scss,md}": ["npx prettier --check"],
-    "web/**/*.{js,jsx,ts,tsx}": ["npm --prefix web run lint:staged"]
+    "web/**/*.{js,jsx,ts,tsx}": ["npm --prefix web run lint:staged"],
+    "server/**/*.{js,ts}": ["npm --prefix server run lint:staged"]
   },
   "devDependencies": {
     "@commitlint/cli": "^19.8.0",
