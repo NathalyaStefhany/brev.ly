@@ -76,7 +76,13 @@ export const NewLink: React.FC = () => {
         />
       </div>
 
-      <Button type="submit" data-testid="button-save-link">
+      <Button
+        type="submit"
+        data-testid="button-save-link"
+        onClick={() => {
+          throw new Error('This is an error!');
+        }}
+      >
         Salvar link
       </Button>
     </form>
