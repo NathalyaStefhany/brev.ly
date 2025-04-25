@@ -50,7 +50,10 @@ Brev.ly is a FullStack URL shortening application, developed as part of my **Pó
 **Back-end:**
 
 - [Node.js](https://nodejs.org/en)
+- [Fastify](https://fastify.dev/)
 - [TypeScript](https://www.typescriptlang.org/)
+- [PostgreSQL](https://www.postgresql.org/)
+- [Drizzle](https://orm.drizzle.team/)
 - [Scalar](https://scalar.com/)
 
 <br/>
