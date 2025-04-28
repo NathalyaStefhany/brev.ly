@@ -1,7 +1,7 @@
 import fastifyCors from '@fastify/cors';
 import fastify from 'fastify';
-import { env } from '../../env';
-import { healthCheckRoute } from './routes/health-check';
+import { env } from '@/env';
+import { healthCheckRoute } from '@/infra/http/routes/health-check';
 
 const server = fastify();
 

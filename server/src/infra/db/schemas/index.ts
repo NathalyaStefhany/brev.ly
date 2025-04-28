@@ -1,4 +1,4 @@
-import { shortenedLinks } from './shortened-links';
+import { shortenedLinks } from '@/infra/db/schemas/shortened-links';
 
 export const schema = {
   shortenedLinks,

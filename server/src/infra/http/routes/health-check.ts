@@ -1,6 +1,6 @@
 import { FastifyPluginAsyncZod } from 'fastify-type-provider-zod';
-import { checkDbConnection } from '../../../app/functions/check-db-connection';
-import { isRight, unwrapEither } from '../../../shared/either';
+import { checkDbConnection } from '@/app/functions/check-db-connection';
+import { isRight, unwrapEither } from '@/shared/either';
 
 export const healthCheckRoute: FastifyPluginAsyncZod = async (server) => {
   server.get('/', async (_, reply) => {

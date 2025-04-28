@@ -1,6 +1,6 @@
 import { sql } from 'drizzle-orm';
-import { db } from '../../infra/db';
-import { Either, makeLeft, makeRight } from '../../shared/either';
+import { Either, makeLeft, makeRight } from '@/shared/either';
+import { db } from '@/infra/db';
 
 type ConnectionError = {
   error: string;
