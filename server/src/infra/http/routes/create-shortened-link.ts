@@ -1,5 +1,5 @@
 import { createShortenedLink } from '@/app/functions/create-shortened-link';
-import { unwrapEither } from '@/shared/either';
+import { isRight, unwrapEither } from '@/shared/either';
 import { FastifyPluginAsyncZod } from 'fastify-type-provider-zod';
 import { z } from 'zod';
 
@@ -14,13 +14,22 @@ export const createShortenedLinkRoute: FastifyPluginAsyncZod = async (
         tags: ['Shortened Links'],
         body: z.object({
           originalLink: z.string().url(),
-          shortenedLink: z.string(),
+          shortenedLink: z.string().min(1),
         }),
         response: {
           201: z
             .object({ id: z.string() })
             .describe(
               "New shortened link created. Returns the link's unique ID.",
+            ),
+          400: z
+            .object({ message: z.string() })
+            .catchall(z.any())
+            .describe('The request was invalid or missing required data.'),
+          500: z
+            .object({ message: z.string() })
+            .describe(
+              'An unexpected internal server error occurred while processing the request.',
             ),
         },
       },
@@ -33,12 +42,23 @@ export const createShortenedLinkRoute: FastifyPluginAsyncZod = async (
         shortenedLink,
       });
 
-      const { id } = unwrapEither(result);
+      if (isRight(result)) {
+        const { id } = unwrapEither(result);
 
-      return reply
-        .header('location', `/shortened-links/${id}`)
-        .status(201)
-        .send({ id });
+        return reply
+          .header('location', `/shortened-links/${id}`)
+          .status(201)
+          .send({ id });
+      }
+
+      const error = unwrapEither(result);
+
+      switch (error.constructor.name) {
+        case 'DuplicateShortenedLink':
+          return reply.status(400).send({ message: error.message });
+        case 'InternalServerError':
+          return reply.status(500).send({ message: error.message });
+      }
     },
   );
 };

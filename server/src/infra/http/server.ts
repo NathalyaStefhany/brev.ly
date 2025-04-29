@@ -11,6 +11,7 @@ import {
 import { env } from '@/env';
 import { healthCheckRoute } from '@/infra/http/routes/health-check';
 import { createShortenedLinkRoute } from '@/infra/http/routes/create-shortened-link';
+import { InternalServerError } from '@/app/errors/internal-server-error';
 
 const server = fastify();
 
@@ -26,7 +27,7 @@ server.setErrorHandler((error, _, reply) => {
 
   console.log(error);
 
-  return reply.status(500).send({ message: 'Internal server error' });
+  return reply.status(500).send({ message: new InternalServerError().message });
 });
 
 server.register(fastifyCors, { origin: '*' });
