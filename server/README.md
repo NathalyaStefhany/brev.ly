@@ -2,7 +2,7 @@
 
 ## 🚀 Features and Rules
 
-- [ ] It must be possible to create a link
+- [x] It must be possible to create a link
   - [ ] It must not be possible to create a link with improperly formatted shortening
   - [ ] It must not be possible to create a link with an already existing shortening
 - [ ] It must be possible to delete a link
