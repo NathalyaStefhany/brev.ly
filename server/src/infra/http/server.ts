@@ -3,17 +3,31 @@ import fastifyCors from '@fastify/cors';
 import fastifySwagger from '@fastify/swagger';
 import scalarUI from '@scalar/fastify-api-reference';
 import {
+  hasZodFastifySchemaValidationErrors,
   jsonSchemaTransform,
   serializerCompiler,
   validatorCompiler,
 } from 'fastify-type-provider-zod';
 import { env } from '@/env';
 import { healthCheckRoute } from '@/infra/http/routes/health-check';
+import { createShortenedLinkRoute } from '@/infra/http/routes/create-shortened-link';
 
 const server = fastify();
 
 server.setValidatorCompiler(validatorCompiler);
 server.setSerializerCompiler(serializerCompiler);
+
+server.setErrorHandler((error, _, reply) => {
+  if (hasZodFastifySchemaValidationErrors(error)) {
+    return reply
+      .status(400)
+      .send({ message: 'Validation error', issues: error.validation });
+  }
+
+  console.log(error);
+
+  return reply.status(500).send({ message: 'Internal server error' });
+});
 
 server.register(fastifyCors, { origin: '*' });
 
@@ -37,6 +51,7 @@ server.register(scalarUI, {
 });
 
 server.register(healthCheckRoute);
+server.register(createShortenedLinkRoute);
 
 server.listen({ port: env.PORT, host: '0.0.0.0' }).then(() => {
   console.log('HTTP server running!');

@@ -8,7 +8,8 @@ export const healthCheckRoute: FastifyPluginAsyncZod = async (server) => {
     '/',
     {
       schema: {
-        summary: 'Health Check',
+        summary: 'Health check',
+        tags: ['Default'],
         response: {
           200: z
             .object({
