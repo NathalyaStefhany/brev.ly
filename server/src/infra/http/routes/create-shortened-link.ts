@@ -1,4 +1,5 @@
 import { createShortenedLink } from '@/app/functions/create-shortened-link';
+import { createShortenedLinkInputSchema } from '@/app/schemas/create-shortened-link';
 import { isRight, unwrapEither } from '@/shared/either';
 import { FastifyPluginAsyncZod } from 'fastify-type-provider-zod';
 import { z } from 'zod';
@@ -12,10 +13,7 @@ export const createShortenedLinkRoute: FastifyPluginAsyncZod = async (
       schema: {
         summary: 'Create shortened link',
         tags: ['Shortened Links'],
-        body: z.object({
-          originalLink: z.string().url(),
-          shortenedLink: z.string().min(1),
-        }),
+        body: createShortenedLinkInputSchema,
         response: {
           201: z
             .object({ id: z.string() })
