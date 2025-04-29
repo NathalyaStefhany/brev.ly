@@ -1,5 +1,5 @@
-import { db } from '@/infra/db';
-import { schema } from '@/infra/db/schemas';
+import { createShortenedLink } from '@/app/functions/create-shortened-link';
+import { unwrapEither } from '@/shared/either';
 import { FastifyPluginAsyncZod } from 'fastify-type-provider-zod';
 import { z } from 'zod';
 
@@ -28,19 +28,17 @@ export const createShortenedLinkRoute: FastifyPluginAsyncZod = async (
     async (request, reply) => {
       const { originalLink, shortenedLink } = request.body;
 
-      const shortenedLinksSchema = schema.shortenedLinks;
+      const result = await createShortenedLink({
+        originalLink,
+        shortenedLink,
+      });
 
-      const [newShortenedLink] = await db
-        .insert(shortenedLinksSchema)
-        .values({ originalLink, shortenedLink })
-        .returning({ id: shortenedLinksSchema.id });
-
-      const newShortenedLinkId = newShortenedLink.id;
+      const { id } = unwrapEither(result);
 
       return reply
-        .header('location', `/shortened-links/${newShortenedLinkId}`)
+        .header('location', `/shortened-links/${id}`)
         .status(201)
-        .send({ id: newShortenedLinkId });
+        .send({ id });
     },
   );
 };
