@@ -18,7 +18,7 @@
     "pretest:watch": "npm run pretest",
     "test:watch": "NODE_ENV=test dotenv -e .env.test -- vitest",
     "preci:test": "npm run db:generate:test && npm run db:migrate:test",
-    "ci:test": "npm run test --coverage"
+    "ci:test": "NODE_ENV=test dotenv -e .env.test -- vitest run --coverage"
   },
   "dependencies": {
     "@fastify/cors": "^11.0.1",
