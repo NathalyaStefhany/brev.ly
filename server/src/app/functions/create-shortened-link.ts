@@ -4,16 +4,13 @@ import { schema } from '@/infra/db/schemas';
 import { Either, makeLeft, makeRight } from '@/shared/either';
 import { DuplicateShortenedLink } from '@/app/errors/duplicate-shortened-link';
 import postgres from 'postgres';
-import { InternalServerError } from '@/app/errors/internal-server-error';
 import { createShortenedLinkInputSchema } from '@/app/schemas/create-shortened-link';
 
 type CreateShortenedLinkInput = z.input<typeof createShortenedLinkInputSchema>;
 
 export async function createShortenedLink(
   input: CreateShortenedLinkInput,
-): Promise<
-  Either<DuplicateShortenedLink | InternalServerError, { id: string }>
-> {
+): Promise<Either<DuplicateShortenedLink, { id: string }>> {
   const { originalLink, shortenedLink } =
     createShortenedLinkInputSchema.parse(input);
 
@@ -37,6 +34,6 @@ export async function createShortenedLink(
       return makeLeft(new DuplicateShortenedLink());
     }
 
-    return makeLeft(new InternalServerError());
+    throw error;
   }
 }

@@ -24,11 +24,6 @@ export const createShortenedLinkRoute: FastifyPluginAsyncZod = async (
             .object({ message: z.string() })
             .catchall(z.any())
             .describe('The request was invalid or missing required data.'),
-          500: z
-            .object({ message: z.string() })
-            .describe(
-              'An unexpected internal server error occurred while processing the request.',
-            ),
         },
       },
     },
@@ -54,8 +49,6 @@ export const createShortenedLinkRoute: FastifyPluginAsyncZod = async (
       switch (error.constructor.name) {
         case 'DuplicateShortenedLink':
           return reply.status(400).send({ message: error.message });
-        case 'InternalServerError':
-          return reply.status(500).send({ message: error.message });
       }
     },
   );
