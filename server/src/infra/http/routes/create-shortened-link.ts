@@ -54,8 +54,6 @@ export const createShortenedLinkRoute: FastifyPluginAsyncZod = async (
       switch (error.constructor.name) {
         case 'DuplicateShortenedLink':
           return reply.status(400).send({ message: error.message });
-        case 'InternalServerError':
-          return reply.status(500).send({ message: error.message });
       }
     },
   );

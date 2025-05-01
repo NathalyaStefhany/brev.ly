@@ -8,8 +8,15 @@
     "lint": "eslint .",
     "lint:staged": "eslint --max-warnings=0",
     "db:generate": "drizzle-kit generate",
+    "db:generate:test": "dotenv -e .env.test -- drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
-    "db:studio": "drizzle-kit studio"
+    "db:migrate:test": "dotenv -e .env.test -- drizzle-kit migrate",
+    "db:studio": "drizzle-kit studio",
+    "docker:test": "docker-compose down && docker-compose --env-file .env.test up --build -d",
+    "pretest": "npm run docker:test && npm run db:generate:test && npm run db:migrate:test",
+    "test": "NODE_ENV=test dotenv -e .env.test -- vitest run",
+    "pretest:watch": "npm run pretest",
+    "test:watch": "NODE_ENV=test dotenv -e .env.test -- vitest"
   },
   "dependencies": {
     "@fastify/cors": "^11.0.1",
@@ -25,11 +32,15 @@
   "devDependencies": {
     "@eslint/js": "^9.25.1",
     "@types/node": "^22.14.1",
+    "@vitest/coverage-v8": "3.1.2",
+    "dotenv": "^16.5.0",
+    "dotenv-cli": "^8.0.0",
     "drizzle-kit": "^0.31.0",
     "eslint": "^9.25.1",
     "globals": "^16.0.0",
     "tsx": "^4.19.3",
     "typescript": "^5.8.3",
-    "typescript-eslint": "^8.31.0"
+    "typescript-eslint": "^8.31.0",
+    "vitest": "^3.1.2"
   }
 }

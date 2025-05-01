@@ -11,7 +11,6 @@ import {
 import { env } from '@/env';
 import { healthCheckRoute } from '@/infra/http/routes/health-check';
 import { createShortenedLinkRoute } from '@/infra/http/routes/create-shortened-link';
-import { InternalServerError } from '@/app/errors/internal-server-error';
 
 const server = fastify();
 
@@ -27,7 +26,7 @@ server.setErrorHandler((error, _, reply) => {
 
   console.log(error);
 
-  return reply.status(500).send({ message: new InternalServerError().message });
+  return reply.status(500).send({ message: 'Internal server error' });
 });
 
 server.register(fastifyCors, { origin: '*' });
@@ -54,6 +53,10 @@ server.register(scalarUI, {
 server.register(healthCheckRoute);
 server.register(createShortenedLinkRoute);
 
-server.listen({ port: env.PORT, host: '0.0.0.0' }).then(() => {
-  console.log('HTTP server running!');
-});
+if (process.env.NODE_ENV !== 'test') {
+  server.listen({ port: env.PORT, host: '0.0.0.0' }).then(() => {
+    console.log('HTTP server running!');
+  });
+}
+
+export { server };
