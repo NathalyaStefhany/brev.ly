@@ -44,6 +44,10 @@ jobs:
           node-version: 22
           cache: pnpm
 
+      - name: Create .env.test file
+        id: create-env-test-file
+        run: echo "${{ secrets.ENV_TEST_FILE }}" > .env.test
+
       - name: Install dependencies
         id: install-dependencies
         working-directory: ./server
