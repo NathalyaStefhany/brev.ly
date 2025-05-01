@@ -46,6 +46,7 @@ jobs:
 
       - name: Create .env.test file
         id: create-env-test-file
+        working-directory: ./server
         run: echo "${{ secrets.ENV_TEST_FILE }}" > .env.test
 
       - name: Install dependencies
