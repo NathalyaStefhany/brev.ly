@@ -64,8 +64,7 @@ export const NewLink: React.FC = () => {
     } catch (error) {
       const err = error as AxiosError;
 
-      let description =
-        'Algo deu errado. Por favor, tente novamente mais tarde.';
+      let description = 'Por favor, tente novamente mais tarde.';
 
       const errorData = err.response?.data as ErrorData;
 
@@ -128,6 +127,7 @@ export const NewLink: React.FC = () => {
           onOpenChange={setOpenToastError}
           duration={5000}
           className="w-150 flex flex-row gap-6 items-start justify-start bg-danger/10 p-8 rounded-lg shadow-lg shadow-gray-300"
+          data-testid="toast-creation-error"
         >
           <WarningCircle
             color="var(--color-danger)"
@@ -145,10 +145,11 @@ export const NewLink: React.FC = () => {
             </Toast.Description>
           </div>
 
-          <Toast.Action altText="Botão para fechar a caixa de erro">
-            <button type="button" className="cursor-pointer text-danger">
-              <X />
-            </button>
+          <Toast.Action
+            altText="Botão para fechar a caixa de erro"
+            className="cursor-pointer text-danger"
+          >
+            <X />
           </Toast.Action>
         </Toast.Root>
 
