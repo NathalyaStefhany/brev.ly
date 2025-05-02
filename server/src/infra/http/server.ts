@@ -11,6 +11,7 @@ import {
 import { env } from '@/env';
 import { healthCheckRoute } from '@/infra/http/routes/health-check';
 import { createShortenedLinkRoute } from '@/infra/http/routes/create-shortened-link';
+import { deleteShortenedLinkRoute } from '@/infra/http/routes/delete-shortened-link';
 
 const server = fastify();
 
@@ -51,7 +52,9 @@ server.register(scalarUI, {
 });
 
 server.register(healthCheckRoute);
+
 server.register(createShortenedLinkRoute);
+server.register(deleteShortenedLinkRoute);
 
 if (process.env.NODE_ENV !== 'test') {
   server.listen({ port: env.PORT, host: '0.0.0.0' }).then(() => {

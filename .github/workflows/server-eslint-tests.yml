@@ -62,4 +62,4 @@ jobs:
       - name: Run tests
         id: run-tests
         working-directory: ./server
-        run: pnpm run ci:test
+        run: pnpm run test:coverage
