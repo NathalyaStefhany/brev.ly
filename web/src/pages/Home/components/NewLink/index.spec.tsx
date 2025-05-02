@@ -5,10 +5,18 @@ import {
   screen,
   waitFor,
 } from '@testing-library/react';
-import { describe, expect, it } from 'vitest';
+import { beforeEach, describe, expect, it } from 'vitest';
+import AxiosMock from 'axios-mock-adapter';
 import { NewLink } from '@/pages/Home/components/NewLink';
+import { api } from '@/service/api';
+
+const apiMock = new AxiosMock(api);
 
 describe('New Link tests', () => {
+  beforeEach(() => {
+    apiMock.reset();
+  });
+
   it('should render correctly', async () => {
     let container: HTMLElement = document.createElement('div');
 
@@ -458,5 +466,120 @@ describe('New Link tests', () => {
         screen.getByTestId('input-shortened-link-error'),
       ).toBeInTheDocument();
     });
+  });
+
+  it('should be able to create a new link', async () => {
+    const newLink = {
+      originalLink: 'www.test.com',
+      shortenedLink: 'test',
+    };
+
+    apiMock.onPost('/shortened-links', newLink).reply(200);
+
+    render(<NewLink />);
+
+    fireEvent.change(screen.getByTestId('input-original-link'), {
+      target: { value: 'www.test.com' },
+    });
+
+    fireEvent.change(screen.getByTestId('input-shortened-link'), {
+      target: { value: 'test' },
+    });
+
+    expect(screen.getByTestId('button-save-link')).toHaveTextContent(
+      'Salvar link',
+    );
+
+    fireEvent.click(screen.getByTestId('button-save-link'));
+
+    expect(screen.getByTestId('button-save-link')).toBeDisabled();
+    expect(screen.getByTestId('button-save-link')).toHaveTextContent(
+      'Salvando...',
+    );
+
+    await waitFor(() => {
+      expect(
+        apiMock.history.post.some(
+          ({ url, data }) =>
+            url === '/shortened-links' && data === JSON.stringify(newLink),
+        ),
+      ).toBeTruthy();
+    });
+
+    expect(
+      screen.queryByTestId('toast-creation-error'),
+    ).not.toBeInTheDocument();
+  });
+
+  it('should display error when try to create a new link with a shortened link that already exists', async () => {
+    const newLink = {
+      originalLink: 'www.test.com',
+      shortenedLink: 'test',
+    };
+
+    apiMock
+      .onPost('/shortened-links', newLink)
+      .reply(400, { message: 'Shortened link already exists' });
+
+    render(<NewLink />);
+
+    fireEvent.change(screen.getByTestId('input-original-link'), {
+      target: { value: 'www.test.com' },
+    });
+
+    fireEvent.change(screen.getByTestId('input-shortened-link'), {
+      target: { value: 'test' },
+    });
+
+    fireEvent.click(screen.getByTestId('button-save-link'));
+
+    await waitFor(() => {
+      expect(
+        apiMock.history.post.some(
+          ({ url, data }) =>
+            url === '/shortened-links' && data === JSON.stringify(newLink),
+        ),
+      ).toBeTruthy();
+    });
+
+    expect(screen.getByTestId('toast-creation-error')).toBeInTheDocument();
+    expect(screen.getByTestId('toast-creation-error')).toHaveTextContent(
+      'Esse link encurtado já existe.',
+    );
+  });
+
+  it('should display error when creation fails', async () => {
+    const newLink = {
+      originalLink: 'www.test.com',
+      shortenedLink: 'test',
+    };
+
+    apiMock.onPost('/shortened-links', newLink).reply(400);
+
+    render(<NewLink />);
+
+    fireEvent.change(screen.getByTestId('input-original-link'), {
+      target: { value: 'www.test.com' },
+    });
+
+    fireEvent.change(screen.getByTestId('input-shortened-link'), {
+      target: { value: 'test' },
+    });
+
+    fireEvent.click(screen.getByTestId('button-save-link'));
+
+    await waitFor(() => {
+      expect(
+        apiMock.history.post.some(
+          ({ url, data }) =>
+            url === '/shortened-links' && data === JSON.stringify(newLink),
+        ),
+      ).toBeTruthy();
+    });
+
+    expect(screen.getByTestId('toast-creation-error')).toBeInTheDocument();
+    expect(screen.getByTestId('toast-creation-error')).toHaveTextContent(
+      'Por favor, tente novamente mais tarde.',
+    );
   });
 });

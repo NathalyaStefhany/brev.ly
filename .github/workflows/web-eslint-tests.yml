@@ -10,6 +10,16 @@ jobs:
     name: Run ESLint and Tests
     runs-on: ubuntu-latest
 
+    env:
+      VITE_PORT: ${{vars.VITE_PORT}}
+
+      VITE_SENTRY_ORG: ${{secrets.VITE_SENTRY_ORG}}
+      VITE_SENTRY_PROJECT: ${{secrets.VITE_SENTRY_PROJECT}}
+      VITE_SENTRY_DSN: ${{secrets.VITE_SENTRY_DSN}}
+      VITE_SENTRY_AUTH_TOKEN: ${{secrets.VITE_SENTRY_AUTH_TOKEN}}
+      
+      VITE_API_URL: ${{secrets.VITE_API_URL}}
+
     steps:
       - name: Checkout repository
         id: checkout-repository

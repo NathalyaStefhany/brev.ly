@@ -48,7 +48,7 @@ exports[`New Link tests > should render correctly 1`] = `
           type="text"
         />
         <span
-          class="absolute top-18.5 left-8.5 text-md text-gray-400 font-normal"
+          class="absolute top-18.5 left-8.5 text-md text-gray-400 font-normal z-1"
           data-testid="input-shortened-link-fixed-placeholder"
         >
           brev.ly/
@@ -69,5 +69,16 @@ exports[`New Link tests > should render correctly 1`] = `
       Salvar link
     </button>
   </form>
+  <div
+    aria-label="Notifications (F8)"
+    role="region"
+    style="pointer-events: none;"
+    tabindex="-1"
+  >
+    <ol
+      class="fixed bottom-12 right-12"
+      tabindex="-1"
+    />
+  </div>
 </div>
 `;
