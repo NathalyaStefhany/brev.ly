@@ -2,9 +2,9 @@
 
 ## 🚀 Features and Rules
 
-- [ ] It must be possible to create a link
-  - [ ] It must not be possible to create a link with improperly formatted shortening
-  - [ ] It must not be possible to create a link with an already existing shortening
+- [x] It must be possible to create a link
+  - [x] It must not be possible to create a link with improperly formatted shortening
+  - [x] It must not be possible to create a link with an already existing shortening
 - [ ] It must be possible to delete a link
 - [ ] It must be possible to retrieve the original URL through the shortening
 - [ ] It must be possible to list all registered URLs
