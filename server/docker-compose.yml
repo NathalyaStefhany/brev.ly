@@ -12,6 +12,7 @@ services:
       - POSTGRES_DB=$POSTGRES_DB
     volumes:
       - "./docker:/docker-entrypoint-initdb.d"
+      - db:/var/lib/postgresql/data
     networks:
       - app
       - db
@@ -21,3 +22,6 @@ networks:
     driver: bridge
   db:
     driver: bridge
+
+volumes:
+  db:
