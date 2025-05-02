@@ -5,9 +5,9 @@
 - [x] It must be possible to create a link
   - [x] It must not be possible to create a link with improperly formatted shortening
   - [x] It must not be possible to create a link with an already existing shortening
-- [ ] It must be possible to delete a link
+- [x] It must be possible to delete a link
 - [ ] It must be possible to retrieve the original URL through the shortening
-- [ ] It must be possible to list all registered URLs
+- [x] It must be possible to list all registered URLs
 - [ ] It must be possible to increment the number of accesses to a link
 - [ ] It must be possible to download a CSV with the report of the created links
   - [ ] It must be possible to access the CSV via a CDN (Amazon S3, Cloudflare R2, etc.)
