@@ -1,7 +1,7 @@
 services:
-  postgresql:
+  postgresql-test:
     image: bitnami/postgresql:latest
-    container_name: postgresql
+    container_name: postgresql-test
     platform: linux/amd64
     restart: unless-stopped
     ports:
@@ -12,7 +12,6 @@ services:
       - POSTGRES_DB=$POSTGRES_DB
     volumes:
       - "./docker:/docker-entrypoint-initdb.d"
-      - db:/var/lib/postgresql/data
     networks:
       - app
       - db
@@ -22,6 +21,3 @@ networks:
     driver: bridge
   db:
     driver: bridge
-
-volumes:
-  db:

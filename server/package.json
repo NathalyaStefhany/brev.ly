@@ -12,13 +12,11 @@
     "db:migrate": "drizzle-kit migrate",
     "db:migrate:test": "dotenv -e .env.test -- drizzle-kit migrate",
     "db:studio": "drizzle-kit studio",
-    "docker:test": "docker-compose down && docker-compose --env-file .env.test up --build -d",
-    "pretest": "npm run docker:test && npm run db:generate:test && npm run db:migrate:test",
-    "test": "NODE_ENV=test dotenv -e .env.test -- vitest run",
-    "pretest:watch": "npm run pretest",
-    "test:watch": "NODE_ENV=test dotenv -e .env.test -- vitest",
-    "preci:test": "npm run db:generate:test && npm run db:migrate:test",
-    "ci:test": "NODE_ENV=test dotenv -e .env.test -- vitest run --coverage"
+    "docker:test": "docker-compose -f docker-compose-tests.yml -p test down && docker-compose -f docker-compose-tests.yml -p test --env-file .env.test up --build -d",
+    "test:prepare": "npm run db:generate:test && npm run db:migrate:test",
+    "test": "npm run test:prepare && NODE_ENV=test dotenv -e .env.test -- vitest run",
+    "test:watch": "npm run test:prepare && NODE_ENV=test dotenv -e .env.test -- vitest",
+    "test:coverage": "npm run test:prepare && NODE_ENV=test dotenv -e .env.test -- vitest run --coverage"
   },
   "dependencies": {
     "@fastify/cors": "^11.0.1",
