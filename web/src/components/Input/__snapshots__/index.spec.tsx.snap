@@ -84,7 +84,7 @@ exports[`Input tests > should display input with fixed placeholder correctly 1`]
       type="text"
     />
     <span
-      class="absolute top-18.5 left-8.5 text-md text-gray-400 font-normal"
+      class="absolute top-18.5 left-8.5 text-md text-gray-400 font-normal z-1"
       data-testid="input-test-fixed-placeholder"
     >
       Placeholder
