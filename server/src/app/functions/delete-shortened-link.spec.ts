@@ -1,19 +1,12 @@
 import { describe, expect, it } from 'vitest';
-import { randomUUID } from 'node:crypto';
 import { deleteShortenedLink } from '@/app/functions/delete-shortened-link';
-import { db } from '@/infra/db';
-import { schema } from '@/infra/db/schemas';
 import { isLeft, isRight, unwrapEither } from '@/shared/either';
 import { ShortenedLinkNotAvailable } from '@/app/errors/shortened-link-not-available';
+import { makeShortenedLink } from '@/tests/factories/make-shortened-link';
 
 describe('Delete shortened link tests', () => {
   it('should be able to delete a shortened link', async () => {
-    const shortenedLink = randomUUID().replaceAll('-', '');
-
-    const [shortenedLinkInfo] = await db
-      .insert(schema.shortenedLinks)
-      .values({ originalLink: 'https://test.com', shortenedLink })
-      .returning();
+    const shortenedLinkInfo = await makeShortenedLink();
 
     const sut = await deleteShortenedLink(shortenedLinkInfo.id);
 

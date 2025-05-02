@@ -1,7 +1,7 @@
 import { db } from '@/infra/db';
 import { schema } from '@/infra/db/schemas';
 import { Either, makeRight } from '@/shared/either';
-import { count } from 'drizzle-orm';
+import { count, desc } from 'drizzle-orm';
 import { z } from 'zod';
 
 const getShortenedLinksInput = z.object({
@@ -39,6 +39,7 @@ export async function getShortenedLinks(
         createdAt: shortenedLinksSchema.createdAt,
       })
       .from(shortenedLinksSchema)
+      .orderBy(desc(shortenedLinksSchema.createdAt))
       .offset((page - 1) * pageSize)
       .limit(pageSize),
     db
