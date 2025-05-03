@@ -5,10 +5,11 @@ import {
   screen,
   waitFor,
 } from '@testing-library/react';
-import { beforeEach, describe, expect, it } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import AxiosMock from 'axios-mock-adapter';
 import { NewLink } from '@/pages/Home/components/NewLink';
 import { api } from '@/service/api';
+import { queryClient } from '@/service/queryClient';
 
 const apiMock = new AxiosMock(api);
 
@@ -649,5 +650,42 @@ describe('New Link tests', () => {
       'www.test.com',
     );
     expect(screen.getByTestId('input-shortened-link')).toHaveValue('test');
+  });
+
+  it('should refetch links list query when create a new link', async () => {
+    const newLink = {
+      originalLink: 'www.test.com',
+      shortenedLink: 'test',
+    };
+
+    apiMock.onPost('/shortened-links', newLink).reply(200);
+
+    queryClient.refetchQueries = vi.fn();
+
+    render(<NewLink />);
+
+    fireEvent.change(screen.getByTestId('input-original-link'), {
+      target: { value: 'www.test.com' },
+    });
+
+    fireEvent.change(screen.getByTestId('input-shortened-link'), {
+      target: { value: 'test' },
+    });
+
+    fireEvent.click(screen.getByTestId('button-save-link'));
+
+    await waitFor(() => {
+      expect(
+        apiMock.history.post.some(
+          ({ url, data }) =>
+            url === '/shortened-links' && data === JSON.stringify(newLink),
+        ),
+      ).toBeTruthy();
+    });
+
+    expect(queryClient.refetchQueries).toBeCalledWith({
+      queryKey: ['links list'],
+      exact: true,
+    });
   });
 });

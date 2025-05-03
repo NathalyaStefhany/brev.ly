@@ -9,6 +9,7 @@ import { Button } from '@/components/Button';
 import { api } from '@/service/api';
 import { WarningCircle, X } from '@phosphor-icons/react';
 import { AxiosError } from 'axios';
+import { queryClient } from '@/service/queryClient';
 
 const originalLinkErrorMessage = 'Informe uma url válida.';
 const shortenedLinkErrorMessage =
@@ -62,6 +63,8 @@ export const NewLink: React.FC = () => {
   const handleSaveLink = async (data: NewLinkData): Promise<void> => {
     try {
       await api.post('/shortened-links', data);
+
+      queryClient.refetchQueries({ queryKey: ['links list'], exact: true });
 
       reset();
     } catch (error) {
