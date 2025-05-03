@@ -3,7 +3,7 @@
 exports[`My Links testes > should render correctly when it is loading list of links 1`] = `
 <div>
   <div
-    class="max-w-190 w-full md:max-w-290 md:min-w-190 h-fit flex flex-col flex-1 gap-8 md:gap-10 bg-gray-100 rounded-lg p-12 md:p-16"
+    class="relative max-w-190 w-full md:max-w-290 md:min-w-190 h-fit flex flex-col flex-1 gap-8 md:gap-10 bg-gray-100 rounded-lg p-12 md:p-16"
   >
     <div
       class="flex flex-row items-center justify-between"
@@ -98,7 +98,7 @@ exports[`My Links testes > should render correctly when it is loading list of li
 exports[`My Links testes > should render correctly when list of links is empty 1`] = `
 <div>
   <div
-    class="max-w-190 w-full md:max-w-290 md:min-w-190 h-fit flex flex-col flex-1 gap-8 md:gap-10 bg-gray-100 rounded-lg p-12 md:p-16"
+    class="relative max-w-190 w-full md:max-w-290 md:min-w-190 h-fit flex flex-col flex-1 gap-8 md:gap-10 bg-gray-100 rounded-lg p-12 md:p-16"
   >
     <div
       class="flex flex-row items-center justify-between"
@@ -160,7 +160,7 @@ exports[`My Links testes > should render correctly when list of links is empty 1
 exports[`My Links testes > should render correctly when list of links request fails 1`] = `
 <div>
   <div
-    class="max-w-190 w-full md:max-w-290 md:min-w-190 h-fit flex flex-col flex-1 gap-8 md:gap-10 bg-gray-100 rounded-lg p-12 md:p-16"
+    class="relative max-w-190 w-full md:max-w-290 md:min-w-190 h-fit flex flex-col flex-1 gap-8 md:gap-10 bg-gray-100 rounded-lg p-12 md:p-16"
   >
     <div
       class="flex flex-row items-center justify-between"

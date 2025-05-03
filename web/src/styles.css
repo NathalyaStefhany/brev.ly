@@ -48,6 +48,17 @@
       opacity: 0.2;
     }
   }
+
+  --animate-border: border 2s linear infinite;
+
+  @keyframes border {
+    0% {
+      background-position: -100% 50%;
+    }
+    100% {
+      background-position: 200% 50%;
+    }
+  }
 }
 
 [data-radix-scroll-area-viewport] > div {

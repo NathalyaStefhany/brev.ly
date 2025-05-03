@@ -17,9 +17,9 @@ type LinkProps = {
 export const Link: React.FC<LinkProps> = ({
   isFirstLink = false,
   isLoading = false,
-  info = {},
+  info,
 }) => {
-  const { id, originalLink, shortenedLink, quantityAccesses } = info;
+  const { id, originalLink, shortenedLink, quantityAccesses } = info ?? {};
 
   return (
     <div
