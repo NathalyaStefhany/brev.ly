@@ -1,5 +1,5 @@
-import { describe, expect, it } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { describe, expect, it, vi } from 'vitest';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { Link } from '@/pages/Home/components/MyLinks/Link';
 
 const linkInfo = {
@@ -51,6 +51,29 @@ describe('Link tests', () => {
 
     expect(screen.getByTestId('text-quantity-accesses')).toHaveTextContent(
       '0 acessos',
+    );
+  });
+
+  it('should copy shortened link', () => {
+    const writeText = vi.fn();
+
+    Object.assign(navigator, {
+      clipboard: {
+        writeText,
+      },
+    });
+
+    render(<Link isFirstLink={false} info={linkInfo} />);
+
+    fireEvent.click(screen.getByTestId('button-copy'));
+
+    expect(writeText).toHaveBeenCalledWith('http://localhost:3000/test');
+
+    expect(screen.getByTestId('toast-shortened-link-copied')).toHaveTextContent(
+      'Link copiado com sucesso',
+    );
+    expect(screen.getByTestId('toast-shortened-link-copied')).toHaveTextContent(
+      'O link test foi copiado para a área de transferência',
     );
   });
 });

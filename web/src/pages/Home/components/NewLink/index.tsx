@@ -132,7 +132,7 @@ export const NewLink: React.FC = () => {
           open={openToastError}
           onOpenChange={setOpenToastError}
           duration={5000}
-          className="w-150 flex flex-row gap-6 items-start justify-start bg-[#f1d4da] p-8 rounded-lg shadow-lg shadow-gray-300"
+          className="max-w-screen w-150 flex flex-row gap-6 items-start justify-start bg-[#f1d4da] p-8 rounded-lg shadow-lg shadow-gray-300"
           data-testid="toast-creation-error"
         >
           <WarningCircle
@@ -159,7 +159,7 @@ export const NewLink: React.FC = () => {
           </Toast.Action>
         </Toast.Root>
 
-        <Toast.Viewport className="fixed bottom-6 left-1/2 transform -translate-x-1/2 md:bottom-12 md:right-12 md:left-auto md:transform-none md:translate-x-0" />
+        <Toast.Viewport className="z-1 fixed bottom-6 left-1/2 transform -translate-x-1/2 md:bottom-12 md:right-12 md:left-auto md:transform-none md:translate-x-0" />
       </Toast.Provider>
     </>
   );
