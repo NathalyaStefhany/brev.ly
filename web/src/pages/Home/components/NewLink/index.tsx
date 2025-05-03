@@ -129,7 +129,7 @@ export const NewLink: React.FC = () => {
           open={openToastError}
           onOpenChange={setOpenToastError}
           duration={5000}
-          className="w-150 flex flex-row gap-6 items-start justify-start bg-danger/10 p-8 rounded-lg shadow-lg shadow-gray-300"
+          className="w-150 flex flex-row gap-6 items-start justify-start bg-[#f1d4da] p-8 rounded-lg shadow-lg shadow-gray-300"
           data-testid="toast-creation-error"
         >
           <WarningCircle
