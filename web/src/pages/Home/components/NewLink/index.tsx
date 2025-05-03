@@ -156,7 +156,7 @@ export const NewLink: React.FC = () => {
           </Toast.Action>
         </Toast.Root>
 
-        <Toast.Viewport className="fixed bottom-12 right-12" />
+        <Toast.Viewport className="fixed bottom-6 left-1/2 transform -translate-x-1/2 md:bottom-12 md:right-12 md:left-auto md:transform-none md:translate-x-0" />
       </Toast.Provider>
     </>
   );
