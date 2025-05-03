@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`My Links testes > should render correctly 1`] = `
+exports[`My Links testes > should render correctly when it is loading list of links 1`] = `
 <div>
   <div
     class="max-w-190 w-full md:max-w-290 md:min-w-190 h-fit flex flex-col flex-1 gap-8 md:gap-10 bg-gray-100 rounded-lg p-12 md:p-16"
@@ -37,7 +37,103 @@ exports[`My Links testes > should render correctly 1`] = `
       class="border-t border-gray-200"
     >
       <div
-        class="flex flex-col items-center justify-center gap-6 mt-8 mb-12"
+        class="flex flex-col items-center justify-center gap-6 mt-16 mb-12"
+        data-testid="container-link-list-loading"
+      >
+        <div
+          class="relative w-12 h-12"
+        >
+          <div
+            class="absolute top-4.5 left-5.5 w-1 h-3 bg-blue-base rounded origin-center animate-fade"
+            style="transform: rotate(0deg) translateY(-150%); opacity: 0; animation-delay: 0s;"
+          />
+          <div
+            class="absolute top-4.5 left-5.5 w-1 h-3 bg-blue-base rounded origin-center animate-fade"
+            style="transform: rotate(36deg) translateY(-150%); opacity: 0.1; animation-delay: 0.098s;"
+          />
+          <div
+            class="absolute top-4.5 left-5.5 w-1 h-3 bg-blue-base rounded origin-center animate-fade"
+            style="transform: rotate(72deg) translateY(-150%); opacity: 0.2; animation-delay: 0.196s;"
+          />
+          <div
+            class="absolute top-4.5 left-5.5 w-1 h-3 bg-blue-base rounded origin-center animate-fade"
+            style="transform: rotate(108deg) translateY(-150%); opacity: 0.3; animation-delay: 0.29400000000000004s;"
+          />
+          <div
+            class="absolute top-4.5 left-5.5 w-1 h-3 bg-blue-base rounded origin-center animate-fade"
+            style="transform: rotate(144deg) translateY(-150%); opacity: 0.4; animation-delay: 0.392s;"
+          />
+          <div
+            class="absolute top-4.5 left-5.5 w-1 h-3 bg-blue-base rounded origin-center animate-fade"
+            style="transform: rotate(180deg) translateY(-150%); opacity: 0.5; animation-delay: 0.49s;"
+          />
+          <div
+            class="absolute top-4.5 left-5.5 w-1 h-3 bg-blue-base rounded origin-center animate-fade"
+            style="transform: rotate(216deg) translateY(-150%); opacity: 0.6; animation-delay: 0.5880000000000001s;"
+          />
+          <div
+            class="absolute top-4.5 left-5.5 w-1 h-3 bg-blue-base rounded origin-center animate-fade"
+            style="transform: rotate(252deg) translateY(-150%); opacity: 0.7; animation-delay: 0.686s;"
+          />
+          <div
+            class="absolute top-4.5 left-5.5 w-1 h-3 bg-blue-base rounded origin-center animate-fade"
+            style="transform: rotate(288deg) translateY(-150%); opacity: 0.8; animation-delay: 0.784s;"
+          />
+          <div
+            class="absolute top-4.5 left-5.5 w-1 h-3 bg-blue-base rounded origin-center animate-fade"
+            style="transform: rotate(324deg) translateY(-150%); opacity: 0.9; animation-delay: 0.882s;"
+          />
+        </div>
+        <p
+          class="text-xs text-gray-500 uppercase text-center"
+        >
+          Carregando...
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`My Links testes > should render correctly when list of links is empty 1`] = `
+<div>
+  <div
+    class="max-w-190 w-full md:max-w-290 md:min-w-190 h-fit flex flex-col flex-1 gap-8 md:gap-10 bg-gray-100 rounded-lg p-12 md:p-16"
+  >
+    <div
+      class="flex flex-row items-center justify-between"
+    >
+      <h2
+        class="text-lg text-gray-600"
+      >
+        Meus links
+      </h2>
+      <button
+        class="flex flex-row gap-3 items-center justify-center cursor-pointer transition-all duration-300 disabled:cursor-not-allowed bg-gray-200 border border-gray-200 text-sm font-semibold text-gray-500 rounded-sm p-3.5 hover:not-disabled:border-blue-base disabled:opacity-50"
+        disabled=""
+        type="button"
+      >
+        <svg
+          data-testid="button-icon"
+          fill="var(--color-gray-600)"
+          height="1rem"
+          viewBox="0 0 256 256"
+          width="1rem"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M224,144v64a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8V144a8,8,0,0,1,16,0v56H208V144a8,8,0,0,1,16,0Zm-101.66,5.66a8,8,0,0,0,11.32,0l40-40a8,8,0,0,0-11.32-11.32L136,124.69V32a8,8,0,0,0-16,0v92.69L93.66,98.34a8,8,0,0,0-11.32,11.32Z"
+          />
+        </svg>
+        Baixar CSV
+      </button>
+    </div>
+    <div
+      class="border-t border-gray-200"
+    >
+      <div
+        class="flex flex-col items-center justify-center gap-6 mt-16 mb-12"
+        data-testid="container-link-list-empty"
       >
         <svg
           fill="var(--color-gray-400)"
@@ -54,6 +150,68 @@ exports[`My Links testes > should render correctly 1`] = `
           class="text-xs text-gray-500 uppercase text-center"
         >
           Ainda não existem links cadastrados
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`My Links testes > should render correctly when list of links request fails 1`] = `
+<div>
+  <div
+    class="max-w-190 w-full md:max-w-290 md:min-w-190 h-fit flex flex-col flex-1 gap-8 md:gap-10 bg-gray-100 rounded-lg p-12 md:p-16"
+  >
+    <div
+      class="flex flex-row items-center justify-between"
+    >
+      <h2
+        class="text-lg text-gray-600"
+      >
+        Meus links
+      </h2>
+      <button
+        class="flex flex-row gap-3 items-center justify-center cursor-pointer transition-all duration-300 disabled:cursor-not-allowed bg-gray-200 border border-gray-200 text-sm font-semibold text-gray-500 rounded-sm p-3.5 hover:not-disabled:border-blue-base disabled:opacity-50"
+        disabled=""
+        type="button"
+      >
+        <svg
+          data-testid="button-icon"
+          fill="var(--color-gray-600)"
+          height="1rem"
+          viewBox="0 0 256 256"
+          width="1rem"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M224,144v64a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8V144a8,8,0,0,1,16,0v56H208V144a8,8,0,0,1,16,0Zm-101.66,5.66a8,8,0,0,0,11.32,0l40-40a8,8,0,0,0-11.32-11.32L136,124.69V32a8,8,0,0,0-16,0v92.69L93.66,98.34a8,8,0,0,0-11.32,11.32Z"
+          />
+        </svg>
+        Baixar CSV
+      </button>
+    </div>
+    <div
+      class="border-t border-gray-200"
+    >
+      <div
+        class="flex flex-col items-center justify-center gap-6 mt-16 mb-12"
+        data-testid="container-link-list-error"
+      >
+        <svg
+          fill="var(--color-danger)"
+          height="2rem"
+          viewBox="0 0 256 256"
+          width="2rem"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M198.63,57.37a32,32,0,0,0-45.19-.06L141.79,69.52a8,8,0,0,1-11.58-11l11.72-12.29a1.59,1.59,0,0,1,.13-.13,48,48,0,0,1,67.88,67.88,1.59,1.59,0,0,1-.13.13l-12.29,11.72a8,8,0,0,1-11-11.58l12.21-11.65A32,32,0,0,0,198.63,57.37ZM114.21,186.48l-11.65,12.21a32,32,0,0,1-45.25-45.25l12.21-11.65a8,8,0,0,0-11-11.58L46.19,141.93a1.59,1.59,0,0,0-.13.13,48,48,0,0,0,67.88,67.88,1.59,1.59,0,0,0,.13-.13l11.72-12.29a8,8,0,1,0-11.58-11ZM216,152H192a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16ZM40,104H64a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16Zm120,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V192A8,8,0,0,0,160,184ZM96,72a8,8,0,0,0,8-8V40a8,8,0,0,0-16,0V64A8,8,0,0,0,96,72Z"
+          />
+        </svg>
+        <p
+          class="text-xs text-gray-500 uppercase text-center"
+        >
+          Erro ao carregar os links cadastrados
         </p>
       </div>
     </div>
