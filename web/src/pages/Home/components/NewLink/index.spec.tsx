@@ -582,4 +582,72 @@ describe('New Link tests', () => {
       'Por favor, tente novamente mais tarde.',
     );
   });
+
+  it('should reset input values when create a new link', async () => {
+    const newLink = {
+      originalLink: 'www.test.com',
+      shortenedLink: 'test',
+    };
+
+    apiMock.onPost('/shortened-links', newLink).reply(200);
+
+    render(<NewLink />);
+
+    fireEvent.change(screen.getByTestId('input-original-link'), {
+      target: { value: 'www.test.com' },
+    });
+
+    fireEvent.change(screen.getByTestId('input-shortened-link'), {
+      target: { value: 'test' },
+    });
+
+    fireEvent.click(screen.getByTestId('button-save-link'));
+
+    await waitFor(() => {
+      expect(
+        apiMock.history.post.some(
+          ({ url, data }) =>
+            url === '/shortened-links' && data === JSON.stringify(newLink),
+        ),
+      ).toBeTruthy();
+    });
+
+    expect(screen.getByTestId('input-original-link')).toHaveValue('');
+    expect(screen.getByTestId('input-shortened-link')).toHaveValue('');
+  });
+
+  it('should not reset input values when creation fails', async () => {
+    const newLink = {
+      originalLink: 'www.test.com',
+      shortenedLink: 'test',
+    };
+
+    apiMock.onPost('/shortened-links', newLink).reply(400);
+
+    render(<NewLink />);
+
+    fireEvent.change(screen.getByTestId('input-original-link'), {
+      target: { value: 'www.test.com' },
+    });
+
+    fireEvent.change(screen.getByTestId('input-shortened-link'), {
+      target: { value: 'test' },
+    });
+
+    fireEvent.click(screen.getByTestId('button-save-link'));
+
+    await waitFor(() => {
+      expect(
+        apiMock.history.post.some(
+          ({ url, data }) =>
+            url === '/shortened-links' && data === JSON.stringify(newLink),
+        ),
+      ).toBeTruthy();
+    });
+
+    expect(screen.getByTestId('input-original-link')).toHaveValue(
+      'www.test.com',
+    );
+    expect(screen.getByTestId('input-shortened-link')).toHaveValue('test');
+  });
 });

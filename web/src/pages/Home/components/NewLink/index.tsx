@@ -54,6 +54,7 @@ export const NewLink: React.FC = () => {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
+    reset,
   } = useForm({
     resolver: zodResolver(newLinkSchema),
   });
@@ -61,6 +62,8 @@ export const NewLink: React.FC = () => {
   const handleSaveLink = async (data: NewLinkData): Promise<void> => {
     try {
       await api.post('/shortened-links', data);
+
+      reset();
     } catch (error) {
       const err = error as AxiosError;
 
