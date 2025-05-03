@@ -37,4 +37,15 @@
   --text-xs--font-weight: 400;
 
   --spacing: 0.125rem;
+
+  --animate-fade: fade 1s linear infinite;
+
+  @keyframes fade {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0.2;
+    }
+  }
 }
