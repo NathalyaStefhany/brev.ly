@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it } from 'vitest';
-import { render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { QueryClientProvider } from '@tanstack/react-query';
 import AxiosMock from 'axios-mock-adapter';
 import { MyLinks } from '@/pages/Home/components/MyLinks';
@@ -140,5 +140,141 @@ describe('My Links testes', () => {
         `${i} acessos`,
       );
     }
+  });
+
+  it('should display skeleton loading in the end of list when has more pages to load', async () => {
+    apiMock.onGet('/shortened-links?page=1&pageSize=20').reply(200, {
+      total: 40,
+      page: 1,
+      pageSize: 20,
+      data: [...Array(20)].map((_, i) => ({
+        id: i.toString(),
+        shortenedLink: `test-${i}`,
+        originalLink: `https://test-${i}.com`,
+        quantityAccesses: i,
+      })),
+    });
+
+    render(
+      <QueryClientProvider client={queryClient}>
+        <MyLinks />
+      </QueryClientProvider>,
+    );
+
+    await waitFor(() => {
+      expect(
+        apiMock.history.get.some(
+          ({ url }) => url === '/shortened-links?page=1&pageSize=20',
+        ),
+      ).toBeTruthy();
+    });
+
+    await waitFor(() => {
+      expect(
+        screen.queryByTestId('container-link-list-loading'),
+      ).not.toBeInTheDocument();
+    });
+
+    expect(screen.getByTestId('container-loading-link')).toBeInTheDocument();
+  });
+
+  it('should load the next page when go to the end of list', async () => {
+    apiMock.onGet('/shortened-links?page=1&pageSize=20').reply(200, {
+      total: 40,
+      page: 1,
+      pageSize: 20,
+      data: [...Array(20)].map((_, i) => ({
+        id: i.toString(),
+        shortenedLink: `test-${i}`,
+        originalLink: `https://test-${i}.com`,
+        quantityAccesses: i,
+      })),
+    });
+
+    apiMock.onGet('/shortened-links?page=2&pageSize=20').reply(200, {
+      total: 40,
+      page: 2,
+      pageSize: 20,
+      data: [...Array(20)].map((_, i) => {
+        const index = i + 20;
+
+        return {
+          id: index.toString(),
+          shortenedLink: `test-${index}`,
+          originalLink: `https://test-${index}.com`,
+          quantityAccesses: index,
+        };
+      }),
+    });
+
+    render(
+      <QueryClientProvider client={queryClient}>
+        <MyLinks />
+      </QueryClientProvider>,
+    );
+
+    await waitFor(() => {
+      expect(
+        apiMock.history.get.some(
+          ({ url }) => url === '/shortened-links?page=1&pageSize=20',
+        ),
+      ).toBeTruthy();
+    });
+
+    await waitFor(() => {
+      expect(
+        screen.queryByTestId('container-link-list-loading'),
+      ).not.toBeInTheDocument();
+    });
+
+    for (let i = 0; i < 40; i++) {
+      if (i < 20) {
+        expect(screen.getByTestId(`container-${i}-link`)).toBeInTheDocument();
+
+        expect(screen.getByTestId(`container-${i}-link`)).toHaveTextContent(
+          `brev.ly/test-${i}`,
+        );
+        expect(screen.getByTestId(`container-${i}-link`)).toHaveTextContent(
+          `https://test-${i}.com`,
+        );
+        expect(screen.getByTestId(`container-${i}-link`)).toHaveTextContent(
+          `${i} acessos`,
+        );
+      } else {
+        expect(
+          screen.queryByTestId(`container-${i}-link`),
+        ).not.toBeInTheDocument();
+      }
+    }
+
+    fireEvent.scroll(screen.getByTestId('container-my-links-scroll'), {
+      currentTarget: { scrollY: 200 },
+    });
+
+    await waitFor(() => {
+      expect(
+        apiMock.history.get.some(
+          ({ url }) => url === '/shortened-links?page=2&pageSize=20',
+        ),
+      ).toBeTruthy();
+    });
+
+    for (let i = 0; i < 40; i++) {
+      expect(screen.getByTestId(`container-${i}-link`)).toBeInTheDocument();
+
+      expect(screen.getByTestId(`container-${i}-link`)).toHaveTextContent(
+        `brev.ly/test-${i}`,
+      );
+      expect(screen.getByTestId(`container-${i}-link`)).toHaveTextContent(
+        `https://test-${i}.com`,
+      );
+      expect(screen.getByTestId(`container-${i}-link`)).toHaveTextContent(
+        `${i} acessos`,
+      );
+    }
+
+    expect(
+      screen.queryByTestId('container-loading-link'),
+    ).not.toBeInTheDocument();
   });
 });

@@ -31,25 +31,41 @@ type ShortenedLinkList = {
 };
 
 export const MyLinks: React.FC = () => {
-  const { data: listOfLinks, isError: listOfLinksIsError } =
-    useInfiniteQuery<ShortenedLinkList>({
-      queryKey: ['links list'],
-      queryFn: async ({ pageParam }) => {
-        const { data } = await api.get(
-          `/shortened-links?page=${pageParam}&pageSize=${PAGE_SIZE}`,
-        );
+  const {
+    data: listOfLinks,
+    isError: listOfLinksIsError,
+    isFetching: listOfLinksIsFetching,
+    hasNextPage,
+    fetchNextPage,
+  } = useInfiniteQuery<ShortenedLinkList>({
+    queryKey: ['links list'],
+    queryFn: async ({ pageParam }) => {
+      const { data } = await api.get(
+        `/shortened-links?page=${pageParam}&pageSize=${PAGE_SIZE}`,
+      );
 
-        return data;
-      },
-      initialPageParam: 1,
-      getNextPageParam: (lastPage, allPages) => {
-        if (lastPage.total < allPages.length * PAGE_SIZE) {
-          return lastPage.page + 1;
-        }
+      return data;
+    },
+    initialPageParam: 1,
+    getNextPageParam: (lastPage, allPages) => {
+      if (lastPage.total > allPages.length * PAGE_SIZE) {
+        return lastPage.page + 1;
+      }
 
-        return undefined;
-      },
-    });
+      return undefined;
+    },
+  });
+
+  const onScroll = (event: React.UIEvent<HTMLDivElement>): void => {
+    const { scrollHeight, scrollTop, clientHeight } = event.currentTarget;
+
+    const distanceFromScrollToEnd = scrollHeight - scrollTop - clientHeight;
+    const scrollIsMiddle = distanceFromScrollToEnd <= clientHeight / 2;
+
+    if (scrollIsMiddle && hasNextPage && !listOfLinksIsFetching) {
+      fetchNextPage();
+    }
+  };
 
   const listOfLinksIsEmpty = listOfLinks && listOfLinks.pages[0].total === 0;
 
@@ -84,13 +100,15 @@ export const MyLinks: React.FC = () => {
           />
         ) : (
           <ScrollArea.Root type="auto" className="w-full">
-            <ScrollArea.Viewport className="overflow-hidden">
-              <div
-                className="md:w-full min-h-113 flex flex-col gap-3 md:gap-4"
-                style={{
-                  maxHeight: 'calc(100vh - 19rem)',
-                }}
-              >
+            <ScrollArea.Viewport
+              onScroll={onScroll}
+              className="overflow-hidden"
+              style={{
+                maxHeight: 'calc(100vh - 19rem)',
+              }}
+              data-testid="container-my-links-scroll"
+            >
+              <div className="md:w-full min-h-113 flex flex-col gap-3 md:gap-4">
                 {listOfLinks.pages.map(({ page, data }) =>
                   data.map((link, index) => {
                     const isFirstLink = index === 0 && page === 1;
@@ -104,6 +122,8 @@ export const MyLinks: React.FC = () => {
                     );
                   }),
                 )}
+
+                {hasNextPage && <Link isFirstLink={false} isLoading />}
               </div>
             </ScrollArea.Viewport>
 

@@ -22,6 +22,14 @@ describe('Link tests', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should render correctly when it is loading', () => {
+    const { container } = render(
+      <Link isFirstLink info={linkInfo} isLoading />,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
   it('should diplay shortened link', () => {
     render(<Link isFirstLink={false} info={linkInfo} />);
 
