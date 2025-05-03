@@ -49,3 +49,7 @@
     }
   }
 }
+
+[data-radix-scroll-area-viewport] > div {
+  display: block !important;
+}

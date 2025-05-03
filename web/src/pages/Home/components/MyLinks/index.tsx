@@ -6,6 +6,7 @@ import {
   Link as LinkIcon,
 } from '@phosphor-icons/react';
 import { useInfiniteQuery } from '@tanstack/react-query';
+import * as ScrollArea from '@radix-ui/react-scroll-area';
 import { Button } from '@/components/Button';
 import { api } from '@/service/api';
 import { Spinner } from '@/components/Spinner';
@@ -82,17 +83,37 @@ export const MyLinks: React.FC = () => {
             data-testid="container-link-list-empty"
           />
         ) : (
-          <div className="flex flex-col gap-3 md:gap-4">
-            {listOfLinks.pages.map(({ page, data }) =>
-              data.map((link, index) => {
-                const isFirstLink = index === 0 && page === 1;
+          <ScrollArea.Root type="auto" className="w-full">
+            <ScrollArea.Viewport className="overflow-hidden">
+              <div
+                className="md:w-full min-h-113 flex flex-col gap-3 md:gap-4"
+                style={{
+                  maxHeight: 'calc(100vh - 19rem)',
+                }}
+              >
+                {listOfLinks.pages.map(({ page, data }) =>
+                  data.map((link, index) => {
+                    const isFirstLink = index === 0 && page === 1;
 
-                return (
-                  <Link key={link.id} isFirstLink={isFirstLink} info={link} />
-                );
-              }),
-            )}
-          </div>
+                    return (
+                      <Link
+                        key={link.id}
+                        isFirstLink={isFirstLink}
+                        info={link}
+                      />
+                    );
+                  }),
+                )}
+              </div>
+            </ScrollArea.Viewport>
+
+            <ScrollArea.Scrollbar
+              orientation="vertical"
+              className="flex w-4 mr-[-0.875rem] bg-gray-200 rounded-full transition-colors duration-150 ease-out"
+            >
+              <ScrollArea.Thumb className="flex-1 rounded-full bg-blue-base hover:bg-blue-dark" />
+            </ScrollArea.Scrollbar>
+          </ScrollArea.Root>
         )}
       </div>
     </div>
