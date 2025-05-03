@@ -9,6 +9,7 @@ import { Button } from '@/components/Button';
 import { api } from '@/service/api';
 import { WarningCircle, X } from '@phosphor-icons/react';
 import { AxiosError } from 'axios';
+import { queryClient } from '@/service/queryClient';
 
 const originalLinkErrorMessage = 'Informe uma url válida.';
 const shortenedLinkErrorMessage =
@@ -54,6 +55,7 @@ export const NewLink: React.FC = () => {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
+    reset,
   } = useForm({
     resolver: zodResolver(newLinkSchema),
   });
@@ -61,6 +63,10 @@ export const NewLink: React.FC = () => {
   const handleSaveLink = async (data: NewLinkData): Promise<void> => {
     try {
       await api.post('/shortened-links', data);
+
+      queryClient.refetchQueries({ queryKey: ['links list'], exact: true });
+
+      reset();
     } catch (error) {
       const err = error as AxiosError;
 
@@ -126,7 +132,7 @@ export const NewLink: React.FC = () => {
           open={openToastError}
           onOpenChange={setOpenToastError}
           duration={5000}
-          className="w-150 flex flex-row gap-6 items-start justify-start bg-danger/10 p-8 rounded-lg shadow-lg shadow-gray-300"
+          className="w-150 flex flex-row gap-6 items-start justify-start bg-[#f1d4da] p-8 rounded-lg shadow-lg shadow-gray-300"
           data-testid="toast-creation-error"
         >
           <WarningCircle
@@ -153,7 +159,7 @@ export const NewLink: React.FC = () => {
           </Toast.Action>
         </Toast.Root>
 
-        <Toast.Viewport className="fixed bottom-12 right-12" />
+        <Toast.Viewport className="fixed bottom-6 left-1/2 transform -translate-x-1/2 md:bottom-12 md:right-12 md:left-auto md:transform-none md:translate-x-0" />
       </Toast.Provider>
     </>
   );

@@ -1,0 +1,50 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Spinner tests > should render correctly 1`] = `
+<div>
+  <div
+    class="relative w-12 h-12"
+  >
+    <div
+      class="absolute top-4.5 left-5.5 w-1 h-3 bg-blue-base rounded origin-center animate-fade"
+      style="transform: rotate(0deg) translateY(-150%); opacity: 0; animation-delay: 0s;"
+    />
+    <div
+      class="absolute top-4.5 left-5.5 w-1 h-3 bg-blue-base rounded origin-center animate-fade"
+      style="transform: rotate(36deg) translateY(-150%); opacity: 0.1; animation-delay: 0.098s;"
+    />
+    <div
+      class="absolute top-4.5 left-5.5 w-1 h-3 bg-blue-base rounded origin-center animate-fade"
+      style="transform: rotate(72deg) translateY(-150%); opacity: 0.2; animation-delay: 0.196s;"
+    />
+    <div
+      class="absolute top-4.5 left-5.5 w-1 h-3 bg-blue-base rounded origin-center animate-fade"
+      style="transform: rotate(108deg) translateY(-150%); opacity: 0.3; animation-delay: 0.29400000000000004s;"
+    />
+    <div
+      class="absolute top-4.5 left-5.5 w-1 h-3 bg-blue-base rounded origin-center animate-fade"
+      style="transform: rotate(144deg) translateY(-150%); opacity: 0.4; animation-delay: 0.392s;"
+    />
+    <div
+      class="absolute top-4.5 left-5.5 w-1 h-3 bg-blue-base rounded origin-center animate-fade"
+      style="transform: rotate(180deg) translateY(-150%); opacity: 0.5; animation-delay: 0.49s;"
+    />
+    <div
+      class="absolute top-4.5 left-5.5 w-1 h-3 bg-blue-base rounded origin-center animate-fade"
+      style="transform: rotate(216deg) translateY(-150%); opacity: 0.6; animation-delay: 0.5880000000000001s;"
+    />
+    <div
+      class="absolute top-4.5 left-5.5 w-1 h-3 bg-blue-base rounded origin-center animate-fade"
+      style="transform: rotate(252deg) translateY(-150%); opacity: 0.7; animation-delay: 0.686s;"
+    />
+    <div
+      class="absolute top-4.5 left-5.5 w-1 h-3 bg-blue-base rounded origin-center animate-fade"
+      style="transform: rotate(288deg) translateY(-150%); opacity: 0.8; animation-delay: 0.784s;"
+    />
+    <div
+      class="absolute top-4.5 left-5.5 w-1 h-3 bg-blue-base rounded origin-center animate-fade"
+      style="transform: rotate(324deg) translateY(-150%); opacity: 0.9; animation-delay: 0.882s;"
+    />
+  </div>
+</div>
+`;
