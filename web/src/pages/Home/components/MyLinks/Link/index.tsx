@@ -101,7 +101,7 @@ export const Link: React.FC<LinkProps> = ({
             className="text-sm text-gray-500 whitespace-nowrap"
             data-testid="text-quantity-accesses"
           >
-            {quantityAccesses} acessos
+            {quantityAccesses ?? 0} acessos
           </p>
         )}
 
@@ -173,24 +173,26 @@ export const Link: React.FC<LinkProps> = ({
         </div>
       </div>
 
-      <Toast
-        id="toast-shortened-link-copied"
-        type="information"
-        title="Link copiado com sucesso"
-        description={`O link ${shortenedLink} foi copiado para a área de transferência`}
-        duration={3000}
-        open={linkCopied}
-        onOpenChange={setLinkCopied}
-      />
+      <div className="fixed z-3">
+        <Toast
+          id="toast-shortened-link-copied"
+          type="information"
+          title="Link copiado com sucesso"
+          description={`O link ${shortenedLink} foi copiado para a área de transferência`}
+          duration={3000}
+          open={linkCopied}
+          onOpenChange={setLinkCopied}
+        />
 
-      <Toast
-        id="toast-deletion-error"
-        type="error"
-        title="Erro ao deletar"
-        description="Por favor, tente novamente mais tarde."
-        open={deletionError}
-        onOpenChange={setDeletionError}
-      />
+        <Toast
+          id="toast-deletion-error"
+          type="error"
+          title="Erro ao deletar"
+          description="Por favor, tente novamente mais tarde."
+          open={deletionError}
+          onOpenChange={setDeletionError}
+        />
+      </div>
     </>
   );
 };
