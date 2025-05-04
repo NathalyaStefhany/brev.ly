@@ -277,4 +277,56 @@ describe('My Links testes', () => {
       screen.queryByTestId('container-loading-link'),
     ).not.toBeInTheDocument();
   });
+
+  it('should get report URL when click to download CSV', async () => {
+    apiMock.onGet('/shortened-links?page=1&pageSize=20').reply(200, {
+      total: 3,
+      page: 1,
+      pageSize: 20,
+      data: [...Array(3)].map((_, i) => ({
+        id: i.toString(),
+        shortenedLink: `test-${i}`,
+        originalLink: `https://test-${i}.com`,
+        quantityAccesses: i,
+      })),
+    });
+    apiMock
+      .onGet('/shortened-links/export')
+      .reply(200, { reportUrl: 'https://test.com' });
+
+    render(
+      <QueryClientProvider client={queryClient}>
+        <MyLinks />
+      </QueryClientProvider>,
+    );
+
+    await waitFor(() => {
+      expect(
+        apiMock.history.get.some(
+          ({ url }) => url === '/shortened-links?page=1&pageSize=20',
+        ),
+      ).toBeTruthy();
+    });
+
+    await waitFor(() => {
+      expect(
+        screen.queryByTestId('container-link-list-loading'),
+      ).not.toBeInTheDocument();
+    });
+
+    expect(screen.getByTestId('button-download')).not.toBeDisabled();
+
+    fireEvent.click(screen.getByTestId('button-download'));
+
+    expect(screen.getByTestId('button-download')).toBeDisabled();
+    expect(screen.getByTestId('button-loading')).toBeInTheDocument();
+
+    await waitFor(() => {
+      expect(
+        apiMock.history.get.some(
+          ({ url }) => url === '/shortened-links/export',
+        ),
+      ).toBeTruthy();
+    });
+  });
 });

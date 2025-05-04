@@ -15,7 +15,7 @@ exports[`My Links testes > should render correctly when it is loading list of li
       </h2>
       <button
         class="flex flex-row gap-3 items-center justify-center cursor-pointer transition-all duration-300 disabled:cursor-not-allowed bg-gray-200 border border-gray-200 text-sm font-semibold text-gray-500 rounded-sm p-3.5 hover:not-disabled:border-blue-base disabled:opacity-50"
-        disabled=""
+        data-testid="button-download"
         type="button"
       >
         <svg
@@ -91,6 +91,17 @@ exports[`My Links testes > should render correctly when it is loading list of li
         </p>
       </div>
     </div>
+    <div
+      aria-label="Notifications (F8)"
+      role="region"
+      style="pointer-events: none;"
+      tabindex="-1"
+    >
+      <ol
+        class="z-3 fixed bottom-6 left-1/2 transform -translate-x-1/2 md:bottom-12 md:right-12 md:left-auto md:transform-none md:translate-x-0"
+        tabindex="-1"
+      />
+    </div>
   </div>
 </div>
 `;
@@ -110,7 +121,7 @@ exports[`My Links testes > should render correctly when list of links is empty 1
       </h2>
       <button
         class="flex flex-row gap-3 items-center justify-center cursor-pointer transition-all duration-300 disabled:cursor-not-allowed bg-gray-200 border border-gray-200 text-sm font-semibold text-gray-500 rounded-sm p-3.5 hover:not-disabled:border-blue-base disabled:opacity-50"
-        disabled=""
+        data-testid="button-download"
         type="button"
       >
         <svg
@@ -153,6 +164,17 @@ exports[`My Links testes > should render correctly when list of links is empty 1
         </p>
       </div>
     </div>
+    <div
+      aria-label="Notifications (F8)"
+      role="region"
+      style="pointer-events: none;"
+      tabindex="-1"
+    >
+      <ol
+        class="z-3 fixed bottom-6 left-1/2 transform -translate-x-1/2 md:bottom-12 md:right-12 md:left-auto md:transform-none md:translate-x-0"
+        tabindex="-1"
+      />
+    </div>
   </div>
 </div>
 `;
@@ -172,7 +194,7 @@ exports[`My Links testes > should render correctly when list of links request fa
       </h2>
       <button
         class="flex flex-row gap-3 items-center justify-center cursor-pointer transition-all duration-300 disabled:cursor-not-allowed bg-gray-200 border border-gray-200 text-sm font-semibold text-gray-500 rounded-sm p-3.5 hover:not-disabled:border-blue-base disabled:opacity-50"
-        disabled=""
+        data-testid="button-download"
         type="button"
       >
         <svg
@@ -214,6 +236,17 @@ exports[`My Links testes > should render correctly when list of links request fa
           Erro ao carregar os links cadastrados
         </p>
       </div>
+    </div>
+    <div
+      aria-label="Notifications (F8)"
+      role="region"
+      style="pointer-events: none;"
+      tabindex="-1"
+    >
+      <ol
+        class="z-3 fixed bottom-6 left-1/2 transform -translate-x-1/2 md:bottom-12 md:right-12 md:left-auto md:transform-none md:translate-x-0"
+        tabindex="-1"
+      />
     </div>
   </div>
 </div>
