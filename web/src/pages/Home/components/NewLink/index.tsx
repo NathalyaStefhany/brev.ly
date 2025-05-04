@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
 
 import { useForm } from 'react-hook-form';
-import * as Toast from '@radix-ui/react-toast';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Input } from '@/components/Input';
 import { Button } from '@/components/Button';
 import { api } from '@/service/api';
-import { WarningCircle, X } from '@phosphor-icons/react';
 import { AxiosError } from 'axios';
 import { queryClient } from '@/service/queryClient';
+import { Toast } from '@/components/Toast';
 
 const originalLinkErrorMessage = 'Informe uma url válida.';
 const shortenedLinkErrorMessage =
@@ -127,40 +126,14 @@ export const NewLink: React.FC = () => {
         </Button>
       </form>
 
-      <Toast.Provider swipeDirection="right">
-        <Toast.Root
-          open={openToastError}
-          onOpenChange={setOpenToastError}
-          duration={5000}
-          className="w-150 flex flex-row gap-6 items-start justify-start bg-[#f1d4da] p-8 rounded-lg shadow-lg shadow-gray-300"
-          data-testid="toast-creation-error"
-        >
-          <WarningCircle
-            color="var(--color-danger)"
-            size="1.25rem"
-            weight="fill"
-          />
-
-          <div className="flex-1">
-            <Toast.Title className="text-md text-danger">
-              {errorCreatingNewLink.title}
-            </Toast.Title>
-
-            <Toast.Description className="text-sm text-danger mt-2">
-              {errorCreatingNewLink.description}
-            </Toast.Description>
-          </div>
-
-          <Toast.Action
-            altText="Botão para fechar a caixa de erro"
-            className="cursor-pointer text-danger"
-          >
-            <X />
-          </Toast.Action>
-        </Toast.Root>
-
-        <Toast.Viewport className="fixed bottom-6 left-1/2 transform -translate-x-1/2 md:bottom-12 md:right-12 md:left-auto md:transform-none md:translate-x-0" />
-      </Toast.Provider>
+      <Toast
+        id="toast-creation-error"
+        type="error"
+        title={errorCreatingNewLink.title}
+        description={errorCreatingNewLink.description}
+        open={openToastError}
+        onOpenChange={setOpenToastError}
+      />
     </>
   );
 };

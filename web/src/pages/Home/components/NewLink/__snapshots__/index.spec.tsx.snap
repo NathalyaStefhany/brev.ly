@@ -76,7 +76,7 @@ exports[`New Link tests > should render correctly 1`] = `
     tabindex="-1"
   >
     <ol
-      class="fixed bottom-6 left-1/2 transform -translate-x-1/2 md:bottom-12 md:right-12 md:left-auto md:transform-none md:translate-x-0"
+      class="z-3 fixed bottom-6 left-1/2 transform -translate-x-1/2 md:bottom-12 md:right-12 md:left-auto md:transform-none md:translate-x-0"
       tabindex="-1"
     />
   </div>

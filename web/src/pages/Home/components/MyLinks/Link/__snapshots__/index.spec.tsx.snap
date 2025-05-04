@@ -37,6 +37,7 @@ exports[`Link tests > should render correctly when it is first link 1`] = `
     >
       <button
         class="cursor-pointer transition-all duration-300 bg-gray-200 border border-gray-200 rounded-sm p-3.5 hover:not-disabled:border-blue-base disabled:opacity-50 disabled:cursor-not-allowed"
+        data-testid="button-copy"
         type="button"
       >
         <svg
@@ -52,7 +53,12 @@ exports[`Link tests > should render correctly when it is first link 1`] = `
         </svg>
       </button>
       <button
+        aria-controls="radix-«r0»"
+        aria-expanded="false"
+        aria-haspopup="dialog"
         class="cursor-pointer transition-all duration-300 bg-gray-200 border border-gray-200 rounded-sm p-3.5 hover:not-disabled:border-blue-base disabled:opacity-50 disabled:cursor-not-allowed"
+        data-state="closed"
+        data-testid="button-delete"
         type="button"
       >
         <svg
@@ -68,6 +74,28 @@ exports[`Link tests > should render correctly when it is first link 1`] = `
         </svg>
       </button>
     </div>
+  </div>
+  <div
+    aria-label="Notifications (F8)"
+    role="region"
+    style="pointer-events: none;"
+    tabindex="-1"
+  >
+    <ol
+      class="z-3 fixed bottom-6 left-1/2 transform -translate-x-1/2 md:bottom-12 md:right-12 md:left-auto md:transform-none md:translate-x-0"
+      tabindex="-1"
+    />
+  </div>
+  <div
+    aria-label="Notifications (F8)"
+    role="region"
+    style="pointer-events: none;"
+    tabindex="-1"
+  >
+    <ol
+      class="z-3 fixed bottom-6 left-1/2 transform -translate-x-1/2 md:bottom-12 md:right-12 md:left-auto md:transform-none md:translate-x-0"
+      tabindex="-1"
+    />
   </div>
 </div>
 `;
@@ -103,6 +131,28 @@ exports[`Link tests > should render correctly when it is loading 1`] = `
         class="h-16 w-16 bg-gray-300 rounded animate-pulse"
       />
     </div>
+  </div>
+  <div
+    aria-label="Notifications (F8)"
+    role="region"
+    style="pointer-events: none;"
+    tabindex="-1"
+  >
+    <ol
+      class="z-3 fixed bottom-6 left-1/2 transform -translate-x-1/2 md:bottom-12 md:right-12 md:left-auto md:transform-none md:translate-x-0"
+      tabindex="-1"
+    />
+  </div>
+  <div
+    aria-label="Notifications (F8)"
+    role="region"
+    style="pointer-events: none;"
+    tabindex="-1"
+  >
+    <ol
+      class="z-3 fixed bottom-6 left-1/2 transform -translate-x-1/2 md:bottom-12 md:right-12 md:left-auto md:transform-none md:translate-x-0"
+      tabindex="-1"
+    />
   </div>
 </div>
 `;
@@ -144,6 +194,7 @@ exports[`Link tests > should render correctly when it is not first link 1`] = `
     >
       <button
         class="cursor-pointer transition-all duration-300 bg-gray-200 border border-gray-200 rounded-sm p-3.5 hover:not-disabled:border-blue-base disabled:opacity-50 disabled:cursor-not-allowed"
+        data-testid="button-copy"
         type="button"
       >
         <svg
@@ -159,7 +210,12 @@ exports[`Link tests > should render correctly when it is not first link 1`] = `
         </svg>
       </button>
       <button
+        aria-controls="radix-«r3»"
+        aria-expanded="false"
+        aria-haspopup="dialog"
         class="cursor-pointer transition-all duration-300 bg-gray-200 border border-gray-200 rounded-sm p-3.5 hover:not-disabled:border-blue-base disabled:opacity-50 disabled:cursor-not-allowed"
+        data-state="closed"
+        data-testid="button-delete"
         type="button"
       >
         <svg
@@ -175,6 +231,28 @@ exports[`Link tests > should render correctly when it is not first link 1`] = `
         </svg>
       </button>
     </div>
+  </div>
+  <div
+    aria-label="Notifications (F8)"
+    role="region"
+    style="pointer-events: none;"
+    tabindex="-1"
+  >
+    <ol
+      class="z-3 fixed bottom-6 left-1/2 transform -translate-x-1/2 md:bottom-12 md:right-12 md:left-auto md:transform-none md:translate-x-0"
+      tabindex="-1"
+    />
+  </div>
+  <div
+    aria-label="Notifications (F8)"
+    role="region"
+    style="pointer-events: none;"
+    tabindex="-1"
+  >
+    <ol
+      class="z-3 fixed bottom-6 left-1/2 transform -translate-x-1/2 md:bottom-12 md:right-12 md:left-auto md:transform-none md:translate-x-0"
+      tabindex="-1"
+    />
   </div>
 </div>
 `;
