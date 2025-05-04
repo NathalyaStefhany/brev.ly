@@ -32,6 +32,17 @@ describe('Button tests', () => {
     expect(screen.queryByTestId('button-icon')).not.toBeInTheDocument();
   });
 
+  it('should not display the icon when is loading', () => {
+    render(
+      <Button icon={Trash} isLoading data-testid="button">
+        Label
+      </Button>,
+    );
+
+    expect(screen.queryByTestId('button-icon')).not.toBeInTheDocument();
+    expect(screen.getByTestId('button-loading')).toBeInTheDocument();
+  });
+
   it('should display primary button correctly', () => {
     const { container } = render(
       <Button variant="primary" data-testid="button">
@@ -45,6 +56,16 @@ describe('Button tests', () => {
   it('should display secondary button correctly', () => {
     const { container } = render(
       <Button variant="secondary" data-testid="button">
+        Label
+      </Button>,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should display loading button correctly', () => {
+    const { container } = render(
+      <Button isLoading data-testid="button">
         Label
       </Button>,
     );

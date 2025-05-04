@@ -21,17 +21,26 @@ const buttonVariants = tv({
 type ButtonProps = ComponentProps<'button'> &
   VariantProps<typeof buttonVariants> & {
     icon?: ComponentType<IconProps>;
+    isLoading?: boolean;
   };
 
 export const Button: React.FC<ButtonProps> = ({
   variant,
   icon: Icon,
+  isLoading = false,
   children,
   ...props
 }) => {
   return (
     <button type="button" className={buttonVariants({ variant })} {...props}>
-      {Icon && (
+      {isLoading && (
+        <div
+          className="w-6 h-6 border-2 border-gray-100 border-t-white/40 rounded-full animate-spin"
+          data-testid="button-loading"
+        />
+      )}
+
+      {Icon && !isLoading && (
         <Icon
           size="1rem"
           color="var(--color-gray-600)"

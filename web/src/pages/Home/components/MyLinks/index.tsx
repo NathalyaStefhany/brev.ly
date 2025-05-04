@@ -68,7 +68,8 @@ export const MyLinks: React.FC = () => {
     }
   };
 
-  const listOfLinksIsEmpty = listOfLinks && listOfLinks.pages[0].total === 0;
+  const quantityOfLinks = (listOfLinks && listOfLinks.pages[0].total) ?? 0;
+  const listOfLinksIsEmpty = quantityOfLinks === 0;
 
   return (
     <div className="relative max-w-190 w-full md:max-w-290 md:min-w-190 h-fit flex flex-col flex-1 gap-8 md:gap-10 bg-gray-100 rounded-lg p-12 md:p-16">
@@ -110,10 +111,11 @@ export const MyLinks: React.FC = () => {
               className="overflow-hidden"
               style={{
                 maxHeight: 'calc(100vh - 19rem)',
+                minHeight: quantityOfLinks < 4 ? 'fit-content' : '14.125rem',
               }}
               data-testid="container-my-links-scroll"
             >
-              <div className="md:w-full min-h-113 flex flex-col gap-3 md:gap-4">
+              <div className="md:w-full flex flex-col gap-3 md:gap-4">
                 {listOfLinks.pages.map(({ page, data }) =>
                   data.map((link, index) => {
                     const isFirstLink = index === 0 && page === 1;

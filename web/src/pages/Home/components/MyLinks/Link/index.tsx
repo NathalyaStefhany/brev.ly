@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 
 import { Copy, Trash, WarningCircle, X } from '@phosphor-icons/react';
 import * as Toast from '@radix-ui/react-toast';
+import * as AlertDialog from '@radix-ui/react-alert-dialog';
 import { IconButton } from '@/components/IconButton';
+import { Button } from '@/components/Button';
+import { api } from '@/service/api';
+import { queryClient } from '@/service/queryClient';
 
 type LinkProps = {
   isFirstLink?: boolean;
@@ -22,6 +26,9 @@ export const Link: React.FC<LinkProps> = ({
 }) => {
   const [linkCopied, setLinkCopied] = useState(false);
 
+  const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
+
   const { id, originalLink, shortenedLink, quantityAccesses } = info ?? {};
 
   const handleCopyShortenedLink = (): void => {
@@ -30,6 +37,17 @@ export const Link: React.FC<LinkProps> = ({
     navigator.clipboard.writeText(link);
 
     setLinkCopied(true);
+  };
+
+  const handleDeleteLink = async (): Promise<void> => {
+    setIsDeleting(true);
+
+    await api.delete(`/shortened-links/${id}`);
+
+    queryClient.refetchQueries({ queryKey: ['links list'], exact: true });
+
+    setIsDeleting(false);
+    setOpenDeleteDialog(false);
   };
 
   return (
@@ -93,7 +111,55 @@ export const Link: React.FC<LinkProps> = ({
                 data-testid="button-copy"
               />
 
-              <IconButton icon={Trash} />
+              <AlertDialog.Root
+                open={openDeleteDialog}
+                onOpenChange={setOpenDeleteDialog}
+              >
+                <AlertDialog.Overlay className="fixed inset-0 bg-gray-600/30 z-2" />
+
+                <AlertDialog.Trigger asChild>
+                  <IconButton icon={Trash} data-testid="button-delete" />
+                </AlertDialog.Trigger>
+
+                <AlertDialog.Content
+                  className="w-150 z-3 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white shadow-lg shadow-gray-400 p-8 rounded-lg"
+                  data-testid="container-delete-confirmation"
+                >
+                  <AlertDialog.Title className="text-lg text-gray-600 mb-4">
+                    Apagar link
+                  </AlertDialog.Title>
+
+                  <AlertDialog.Description className="text-sm text-gray-600 mb-12">
+                    Você realmente quer apagar o link {shortenedLink}?
+                  </AlertDialog.Description>
+
+                  <div className="flex flex-row gap-4 justify-end">
+                    <AlertDialog.Cancel asChild>
+                      <Button
+                        variant="secondary"
+                        style={{ padding: '0.5rem 1.25rem' }}
+                        data-testid="button-cancel-deletion"
+                      >
+                        Cancelar
+                      </Button>
+                    </AlertDialog.Cancel>
+
+                    <Button
+                      onClick={handleDeleteLink}
+                      isLoading={isDeleting}
+                      disabled={isDeleting}
+                      style={{
+                        width: 'fit-content',
+                        padding: '0.5rem 1.25rem',
+                        borderRadius: '4px',
+                      }}
+                      data-testid="button-delete-confirmation"
+                    >
+                      Apagar
+                    </Button>
+                  </div>
+                </AlertDialog.Content>
+              </AlertDialog.Root>
             </>
           )}
         </div>
