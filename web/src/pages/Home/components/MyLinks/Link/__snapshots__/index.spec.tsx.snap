@@ -78,26 +78,30 @@ exports[`Link tests > should render correctly when it is first link 1`] = `
     </div>
   </div>
   <div
-    aria-label="Notifications (F8)"
-    role="region"
-    style="pointer-events: none;"
-    tabindex="-1"
+    class="fixed z-3"
   >
-    <ol
-      class="z-3 fixed bottom-6 left-1/2 transform -translate-x-1/2 md:bottom-12 md:right-12 md:left-auto md:transform-none md:translate-x-0"
+    <div
+      aria-label="Notifications (F8)"
+      role="region"
+      style="pointer-events: none;"
       tabindex="-1"
-    />
-  </div>
-  <div
-    aria-label="Notifications (F8)"
-    role="region"
-    style="pointer-events: none;"
-    tabindex="-1"
-  >
-    <ol
-      class="z-3 fixed bottom-6 left-1/2 transform -translate-x-1/2 md:bottom-12 md:right-12 md:left-auto md:transform-none md:translate-x-0"
+    >
+      <ol
+        class="z-3 fixed bottom-6 left-1/2 transform -translate-x-1/2 md:bottom-12 md:right-12 md:left-auto md:transform-none md:translate-x-0"
+        tabindex="-1"
+      />
+    </div>
+    <div
+      aria-label="Notifications (F8)"
+      role="region"
+      style="pointer-events: none;"
       tabindex="-1"
-    />
+    >
+      <ol
+        class="z-3 fixed bottom-6 left-1/2 transform -translate-x-1/2 md:bottom-12 md:right-12 md:left-auto md:transform-none md:translate-x-0"
+        tabindex="-1"
+      />
+    </div>
   </div>
 </div>
 `;
@@ -135,26 +139,30 @@ exports[`Link tests > should render correctly when it is loading 1`] = `
     </div>
   </div>
   <div
-    aria-label="Notifications (F8)"
-    role="region"
-    style="pointer-events: none;"
-    tabindex="-1"
+    class="fixed z-3"
   >
-    <ol
-      class="z-3 fixed bottom-6 left-1/2 transform -translate-x-1/2 md:bottom-12 md:right-12 md:left-auto md:transform-none md:translate-x-0"
+    <div
+      aria-label="Notifications (F8)"
+      role="region"
+      style="pointer-events: none;"
       tabindex="-1"
-    />
-  </div>
-  <div
-    aria-label="Notifications (F8)"
-    role="region"
-    style="pointer-events: none;"
-    tabindex="-1"
-  >
-    <ol
-      class="z-3 fixed bottom-6 left-1/2 transform -translate-x-1/2 md:bottom-12 md:right-12 md:left-auto md:transform-none md:translate-x-0"
+    >
+      <ol
+        class="z-3 fixed bottom-6 left-1/2 transform -translate-x-1/2 md:bottom-12 md:right-12 md:left-auto md:transform-none md:translate-x-0"
+        tabindex="-1"
+      />
+    </div>
+    <div
+      aria-label="Notifications (F8)"
+      role="region"
+      style="pointer-events: none;"
       tabindex="-1"
-    />
+    >
+      <ol
+        class="z-3 fixed bottom-6 left-1/2 transform -translate-x-1/2 md:bottom-12 md:right-12 md:left-auto md:transform-none md:translate-x-0"
+        tabindex="-1"
+      />
+    </div>
   </div>
 </div>
 `;
@@ -237,26 +245,30 @@ exports[`Link tests > should render correctly when it is not first link 1`] = `
     </div>
   </div>
   <div
-    aria-label="Notifications (F8)"
-    role="region"
-    style="pointer-events: none;"
-    tabindex="-1"
+    class="fixed z-3"
   >
-    <ol
-      class="z-3 fixed bottom-6 left-1/2 transform -translate-x-1/2 md:bottom-12 md:right-12 md:left-auto md:transform-none md:translate-x-0"
+    <div
+      aria-label="Notifications (F8)"
+      role="region"
+      style="pointer-events: none;"
       tabindex="-1"
-    />
-  </div>
-  <div
-    aria-label="Notifications (F8)"
-    role="region"
-    style="pointer-events: none;"
-    tabindex="-1"
-  >
-    <ol
-      class="z-3 fixed bottom-6 left-1/2 transform -translate-x-1/2 md:bottom-12 md:right-12 md:left-auto md:transform-none md:translate-x-0"
+    >
+      <ol
+        class="z-3 fixed bottom-6 left-1/2 transform -translate-x-1/2 md:bottom-12 md:right-12 md:left-auto md:transform-none md:translate-x-0"
+        tabindex="-1"
+      />
+    </div>
+    <div
+      aria-label="Notifications (F8)"
+      role="region"
+      style="pointer-events: none;"
       tabindex="-1"
-    />
+    >
+      <ol
+        class="z-3 fixed bottom-6 left-1/2 transform -translate-x-1/2 md:bottom-12 md:right-12 md:left-auto md:transform-none md:translate-x-0"
+        tabindex="-1"
+      />
+    </div>
   </div>
 </div>
 `;
