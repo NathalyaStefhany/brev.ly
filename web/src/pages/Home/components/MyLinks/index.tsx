@@ -55,6 +55,7 @@ export const MyLinks: React.FC = () => {
 
       return undefined;
     },
+    refetchOnWindowFocus: true,
   });
 
   const onScroll = (event: React.UIEvent<HTMLDivElement>): void => {
