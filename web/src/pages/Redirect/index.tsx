@@ -1,8 +1,46 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
+import { useLocation, useNavigate } from 'react-router';
+import { api } from '@/service/api';
 import logoIcon from '@/assets/logo-icon.svg';
+import { AxiosError } from 'axios';
+
+type GetOriginalLinkOutput = {
+  originalLink: string;
+};
 
 export const Redirect: React.FC = () => {
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const getOriginalLink = async (): Promise<void> => {
+      try {
+        const { data } = await api.get<GetOriginalLinkOutput>(
+          `/shortened-links/${pathname.slice(1)}/original-link`,
+        );
+
+        let url = data.originalLink;
+
+        if (url.startsWith('www.')) {
+          url = `https://${url}`;
+        }
+
+        window.location.href = url;
+      } catch (error) {
+        const err = error as AxiosError;
+
+        if (err.status === 404) {
+          navigate('/url/not-found');
+        }
+      }
+    };
+
+    if (pathname) {
+      getOriginalLink();
+    }
+  }, [pathname, navigate]);
+
   return (
     <main
       className="w-screen min-h-screen flex flex-row items-center justify-center p-6 bg-gray-200"
