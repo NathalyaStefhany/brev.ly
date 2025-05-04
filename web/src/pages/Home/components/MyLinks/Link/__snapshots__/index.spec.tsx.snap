@@ -14,6 +14,8 @@ exports[`Link tests > should render correctly when it is first link 1`] = `
         class="text-md text-blue-base truncate"
         data-testid="link-shortened-link"
         href="/test"
+        rel="noreferrer"
+        target="_blank"
       >
         brev.ly/
         test
@@ -171,6 +173,8 @@ exports[`Link tests > should render correctly when it is not first link 1`] = `
         class="text-md text-blue-base truncate"
         data-testid="link-shortened-link"
         href="/test"
+        rel="noreferrer"
+        target="_blank"
       >
         brev.ly/
         test

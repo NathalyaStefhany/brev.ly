@@ -73,6 +73,8 @@ export const Link: React.FC<LinkProps> = ({
           ) : (
             <a
               href={`/${shortenedLink}`}
+              target="_blank"
+              rel="noreferrer"
               className="text-md text-blue-base truncate"
               data-testid="link-shortened-link"
             >
