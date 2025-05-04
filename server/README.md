@@ -9,8 +9,8 @@
 - [x] It must be possible to retrieve the original URL through the shortening
 - [x] It must be possible to list all registered URLs
 - [x] It must be possible to increment the number of accesses to a link
-- [ ] It must be possible to download a CSV with the report of the created links
-  - [ ] It must be possible to access the CSV via a CDN (Amazon S3, Cloudflare R2, etc.)
-  - [ ] A random and unique name must be generated for the file
-  - [ ] It must be possible to list the URLs in a performant way
-  - [ ] The CSV must include fields such as original URL, shortened URL, access count, and creation date
+- [x] It must be possible to download a CSV with the report of the created links
+  - [x] It must be possible to access the CSV via a CDN (Amazon S3, Cloudflare R2, etc.)
+  - [x] A random and unique name must be generated for the file
+  - [x] It must be possible to list the URLs in a performant way
+  - [x] The CSV must include fields such as original URL, shortened URL, access count, and creation date

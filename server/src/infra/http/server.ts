@@ -15,6 +15,7 @@ import { deleteShortenedLinkRoute } from '@/infra/http/routes/delete-shortened-l
 import { getShortenedLinksRoute } from '@/infra/http/routes/get-shortened-links';
 import { getOriginalLinkRoute } from '@/infra/http/routes/get-original-link';
 import { updateAccessQuantityRoute } from '@/infra/http/routes/update-access-quantity';
+import { exportShortenedLinksRoute } from '@/infra/http/routes/export-shortened-links';
 
 const server = fastify();
 
@@ -64,6 +65,7 @@ server.register(deleteShortenedLinkRoute);
 server.register(getShortenedLinksRoute);
 server.register(getOriginalLinkRoute);
 server.register(updateAccessQuantityRoute);
+server.register(exportShortenedLinksRoute);
 
 if (process.env.NODE_ENV !== 'test') {
   server.listen({ port: env.PORT, host: '0.0.0.0' }).then(() => {
