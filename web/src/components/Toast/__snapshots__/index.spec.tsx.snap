@@ -20,7 +20,7 @@ exports[`Toast tests > should render correctly when type is error 1`] = `
       <li
         aria-atomic="true"
         aria-live="off"
-        class="max-w-screen w-180 flex flex-row gap-6 items-start justify-start bg-[#f1d4da] p-8 rounded-lg shadow-lg shadow-gray-300"
+        class="max-w-[94vw] w-180 flex flex-row gap-6 items-start justify-start bg-[#f1d4da] p-8 rounded-lg shadow-lg shadow-gray-300"
         data-radix-collection-item=""
         data-state="open"
         data-swipe-direction="right"
@@ -103,7 +103,7 @@ exports[`Toast tests > should render correctly when type is information 1`] = `
       <li
         aria-atomic="true"
         aria-live="off"
-        class="max-w-screen w-180 flex flex-row gap-6 items-start justify-start bg-[#d6d8ef] p-8 rounded-lg shadow-lg shadow-gray-300"
+        class="max-w-[94vw] w-180 flex flex-row gap-6 items-start justify-start bg-[#d6d8ef] p-8 rounded-lg shadow-lg shadow-gray-300"
         data-radix-collection-item=""
         data-state="open"
         data-swipe-direction="right"

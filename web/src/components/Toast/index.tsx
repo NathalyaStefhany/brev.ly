@@ -33,7 +33,7 @@ export const Toast: React.FC<ToastProps> = ({
         open={open}
         onOpenChange={onOpenChange}
         duration={duration}
-        className={`max-w-screen w-180 flex flex-row gap-6 items-start justify-start bg-[${backgroundColor}] p-8 rounded-lg shadow-lg shadow-gray-300`}
+        className={`max-w-[94vw] w-180 flex flex-row gap-6 items-start justify-start bg-[${backgroundColor}] p-8 rounded-lg shadow-lg shadow-gray-300`}
         data-testid={id}
       >
         <WarningCircle
