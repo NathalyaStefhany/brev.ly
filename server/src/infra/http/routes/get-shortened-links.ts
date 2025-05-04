@@ -3,9 +3,7 @@ import { unwrapEither } from '@/shared/either';
 import { FastifyPluginAsyncZod } from 'fastify-type-provider-zod';
 import { z } from 'zod';
 
-export const getShortenedLinksRoutes: FastifyPluginAsyncZod = async (
-  server,
-) => {
+export const getShortenedLinksRoute: FastifyPluginAsyncZod = async (server) => {
   server.get(
     '/shortened-links',
     {
