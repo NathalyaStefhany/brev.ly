@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import {
   DownloadSimple,
@@ -12,6 +12,8 @@ import { api } from '@/service/api';
 import { Spinner } from '@/components/Spinner';
 import { Link } from '@/pages/Home/components/MyLinks/Link';
 import { EmptyState } from '@/components/EmptyState';
+import { downloadUrl } from '@/utils/downloadUrl';
+import { Toast } from '@/components/Toast';
 
 const PAGE_SIZE = 20;
 
@@ -30,7 +32,14 @@ type ShortenedLinkList = {
   data: ShortenedLinkInfo[];
 };
 
+type ExportOutput = {
+  reportUrl: string;
+};
+
 export const MyLinks: React.FC = () => {
+  const [isDownloading, setIsDownloading] = useState(false);
+  const [downloadError, setDownloadError] = useState(false);
+
   const {
     data: listOfLinks,
     isError: listOfLinksIsError,
@@ -69,6 +78,20 @@ export const MyLinks: React.FC = () => {
     }
   };
 
+  const handleExportCSV = async (): Promise<void> => {
+    setIsDownloading(true);
+
+    try {
+      const { data } = await api.get<ExportOutput>('/shortened-links/export');
+
+      await downloadUrl(data.reportUrl);
+    } catch {
+      setDownloadError(true);
+    }
+
+    setIsDownloading(false);
+  };
+
   const quantityOfLinks = (listOfLinks && listOfLinks.pages[0].total) ?? 0;
   const listOfLinksIsEmpty = quantityOfLinks === 0;
 
@@ -81,7 +104,14 @@ export const MyLinks: React.FC = () => {
       <div className="flex flex-row items-center justify-between">
         <h2 className="text-lg text-gray-600">Meus links</h2>
 
-        <Button variant="secondary" icon={DownloadSimple} disabled>
+        <Button
+          variant="secondary"
+          icon={DownloadSimple}
+          onClick={handleExportCSV}
+          isLoading={isDownloading}
+          disabled={isDownloading}
+          data-testid="button-download"
+        >
           Baixar CSV
         </Button>
       </div>
@@ -111,7 +141,7 @@ export const MyLinks: React.FC = () => {
               onScroll={onScroll}
               className="overflow-hidden"
               style={{
-                maxHeight: 'calc(100vh - 19rem)',
+                maxHeight: 'calc(100vh - 21rem)',
                 minHeight: quantityOfLinks < 4 ? 'fit-content' : '14.125rem',
               }}
               data-testid="container-my-links-scroll"
@@ -144,6 +174,15 @@ export const MyLinks: React.FC = () => {
           </ScrollArea.Root>
         )}
       </div>
+
+      <Toast
+        id="toast-download-error"
+        type="error"
+        open={downloadError}
+        onOpenChange={setDownloadError}
+        title="Erro ao realizar o download"
+        description="Por favor, tente novamente mais tarde."
+      />
     </div>
   );
 };

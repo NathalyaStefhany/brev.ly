@@ -63,7 +63,7 @@ export async function exportShortenedLinks(): Promise<
   const uploadToStorage = uploadFileToStorage({
     contentType: 'text/csv',
     folder: 'downloads',
-    fileName: 'shortened-links.csv',
+    fileName: 'links.csv',
     contentStream: uploadToStorageStream,
   });
 

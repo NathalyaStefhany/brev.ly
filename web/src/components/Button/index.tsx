@@ -25,17 +25,20 @@ type ButtonProps = ComponentProps<'button'> &
   };
 
 export const Button: React.FC<ButtonProps> = ({
-  variant,
+  variant = 'primary',
   icon: Icon,
   isLoading = false,
   children,
   ...props
 }) => {
+  const loadingColor =
+    variant === 'primary' ? 'border-gray-100' : 'border-blue-base';
+
   return (
     <button type="button" className={buttonVariants({ variant })} {...props}>
       {isLoading && (
         <div
-          className="w-6 h-6 border-2 border-gray-100 border-t-white/40 rounded-full animate-spin"
+          className={`w-6 h-6 border-2 ${loadingColor} border-t-white/40 rounded-full animate-spin`}
           data-testid="button-loading"
         />
       )}
