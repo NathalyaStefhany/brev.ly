@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 
-import { Copy, Trash, WarningCircle, X } from '@phosphor-icons/react';
-import * as Toast from '@radix-ui/react-toast';
+import { Copy, Trash } from '@phosphor-icons/react';
 import * as AlertDialog from '@radix-ui/react-alert-dialog';
 import { IconButton } from '@/components/IconButton';
 import { Button } from '@/components/Button';
 import { api } from '@/service/api';
 import { queryClient } from '@/service/queryClient';
+import { Toast } from '@/components/Toast';
 
 type LinkProps = {
   isFirstLink?: boolean;
@@ -28,6 +28,7 @@ export const Link: React.FC<LinkProps> = ({
 
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [deletionError, setDeletionError] = useState(false);
 
   const { id, originalLink, shortenedLink, quantityAccesses } = info ?? {};
 
@@ -42,12 +43,17 @@ export const Link: React.FC<LinkProps> = ({
   const handleDeleteLink = async (): Promise<void> => {
     setIsDeleting(true);
 
-    await api.delete(`/shortened-links/${id}`);
+    try {
+      await api.delete(`/shortened-links/${id}`);
 
-    queryClient.refetchQueries({ queryKey: ['links list'], exact: true });
+      queryClient.refetchQueries({ queryKey: ['links list'], exact: true });
+
+      setOpenDeleteDialog(false);
+    } catch {
+      setDeletionError(true);
+    }
 
     setIsDeleting(false);
-    setOpenDeleteDialog(false);
   };
 
   return (
@@ -165,40 +171,24 @@ export const Link: React.FC<LinkProps> = ({
         </div>
       </div>
 
-      <Toast.Provider swipeDirection="right">
-        <Toast.Root
-          open={linkCopied}
-          onOpenChange={setLinkCopied}
-          duration={3000}
-          className="max-w-screen w-180 flex flex-row gap-6 items-start justify-start bg-[#d6d8ef] p-8 rounded-lg shadow-lg shadow-gray-300"
-          data-testid="toast-shortened-link-copied"
-        >
-          <WarningCircle
-            color="var(--color-blue-base)"
-            size="1.25rem"
-            weight="fill"
-          />
+      <Toast
+        id="toast-shortened-link-copied"
+        type="information"
+        title="Link copiado com sucesso"
+        description={`O link ${shortenedLink} foi copiado para a área de transferência`}
+        duration={3000}
+        open={linkCopied}
+        onOpenChange={setLinkCopied}
+      />
 
-          <div className="flex-1">
-            <Toast.Title className="text-md text-blue-base">
-              Link copiado com sucesso
-            </Toast.Title>
-
-            <Toast.Description className="text-sm text-blue-base mt-2">
-              O link {shortenedLink} foi copiado para a área de transferência
-            </Toast.Description>
-          </div>
-
-          <Toast.Action
-            altText="Botão para fechar a caixa de aviso"
-            className="cursor-pointer text-blue-base"
-          >
-            <X />
-          </Toast.Action>
-        </Toast.Root>
-
-        <Toast.Viewport className="z-1 fixed bottom-6 left-1/2 transform -translate-x-1/2 md:bottom-12 md:right-12 md:left-auto md:transform-none md:translate-x-0" />
-      </Toast.Provider>
+      <Toast
+        id="toast-deletion-error"
+        type="error"
+        title="Erro ao deletar"
+        description="Por favor, tente novamente mais tarde."
+        open={deletionError}
+        onOpenChange={setDeletionError}
+      />
     </>
   );
 };

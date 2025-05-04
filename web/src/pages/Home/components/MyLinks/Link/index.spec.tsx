@@ -129,4 +129,34 @@ describe('Link tests', () => {
       ).not.toBeInTheDocument();
     });
   });
+
+  it('should display toast error when deletion fails', async () => {
+    apiMock.onDelete('/shortened-links/123').reply(400);
+
+    render(<Link isFirstLink={false} info={linkInfo} />);
+
+    fireEvent.click(screen.getByTestId('button-delete'));
+
+    fireEvent.click(screen.getByTestId('button-delete-confirmation'));
+
+    await waitFor(() => {
+      expect(
+        apiMock.history.delete.some(
+          ({ url }) => url === '/shortened-links/123',
+        ),
+      ).toBeTruthy();
+    });
+
+    await waitFor(() => {
+      expect(screen.getByTestId('toast-deletion-error')).toBeInTheDocument();
+    });
+
+    expect(screen.getByTestId('toast-deletion-error')).toHaveTextContent(
+      'Erro ao deletar',
+    );
+
+    expect(
+      screen.getByTestId('container-delete-confirmation'),
+    ).toBeInTheDocument();
+  });
 });

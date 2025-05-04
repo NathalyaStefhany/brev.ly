@@ -1,0 +1,167 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Toast tests > should render correctly when type is error 1`] = `
+<div>
+  <div
+    aria-label="Notifications (F8)"
+    role="region"
+    style=""
+    tabindex="-1"
+  >
+    <span
+      aria-hidden="true"
+      style="position: fixed; border: 0px; width: 1px; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0px, 0px, 0px, 0px); white-space: nowrap; word-wrap: normal;"
+      tabindex="0"
+    />
+    <ol
+      class="z-3 fixed bottom-6 left-1/2 transform -translate-x-1/2 md:bottom-12 md:right-12 md:left-auto md:transform-none md:translate-x-0"
+      tabindex="-1"
+    >
+      <li
+        aria-atomic="true"
+        aria-live="off"
+        class="max-w-screen w-180 flex flex-row gap-6 items-start justify-start bg-[#f1d4da] p-8 rounded-lg shadow-lg shadow-gray-300"
+        data-radix-collection-item=""
+        data-state="open"
+        data-swipe-direction="right"
+        data-testid="toast"
+        role="status"
+        style="user-select: none;"
+        tabindex="0"
+      >
+        <svg
+          fill="var(--color-danger)"
+          height="1.25rem"
+          viewBox="0 0 256 256"
+          width="1.25rem"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm-8,56a8,8,0,0,1,16,0v56a8,8,0,0,1-16,0Zm8,104a12,12,0,1,1,12-12A12,12,0,0,1,128,184Z"
+          />
+        </svg>
+        <div
+          class="flex-1"
+        >
+          <div
+            class="text-md text-danger"
+          >
+            Toast title
+          </div>
+          <div
+            class="text-sm text-danger mt-2"
+          >
+            Toast description
+          </div>
+        </div>
+        <button
+          class="cursor-pointer text-danger"
+          data-radix-toast-announce-alt="Botão para fechar a caixa de aviso"
+          data-radix-toast-announce-exclude=""
+          type="button"
+        >
+          <svg
+            fill="currentColor"
+            height="1em"
+            viewBox="0 0 256 256"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"
+            />
+          </svg>
+        </button>
+      </li>
+    </ol>
+    <span
+      aria-hidden="true"
+      style="position: fixed; border: 0px; width: 1px; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0px, 0px, 0px, 0px); white-space: nowrap; word-wrap: normal;"
+      tabindex="0"
+    />
+  </div>
+</div>
+`;
+
+exports[`Toast tests > should render correctly when type is information 1`] = `
+<div>
+  <div
+    aria-label="Notifications (F8)"
+    role="region"
+    style=""
+    tabindex="-1"
+  >
+    <span
+      aria-hidden="true"
+      style="position: fixed; border: 0px; width: 1px; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0px, 0px, 0px, 0px); white-space: nowrap; word-wrap: normal;"
+      tabindex="0"
+    />
+    <ol
+      class="z-3 fixed bottom-6 left-1/2 transform -translate-x-1/2 md:bottom-12 md:right-12 md:left-auto md:transform-none md:translate-x-0"
+      tabindex="-1"
+    >
+      <li
+        aria-atomic="true"
+        aria-live="off"
+        class="max-w-screen w-180 flex flex-row gap-6 items-start justify-start bg-[#d6d8ef] p-8 rounded-lg shadow-lg shadow-gray-300"
+        data-radix-collection-item=""
+        data-state="open"
+        data-swipe-direction="right"
+        data-testid="toast"
+        role="status"
+        style="user-select: none;"
+        tabindex="0"
+      >
+        <svg
+          fill="var(--color-blue-base)"
+          height="1.25rem"
+          viewBox="0 0 256 256"
+          width="1.25rem"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm-8,56a8,8,0,0,1,16,0v56a8,8,0,0,1-16,0Zm8,104a12,12,0,1,1,12-12A12,12,0,0,1,128,184Z"
+          />
+        </svg>
+        <div
+          class="flex-1"
+        >
+          <div
+            class="text-md text-blue-base"
+          >
+            Toast title
+          </div>
+          <div
+            class="text-sm text-blue-base mt-2"
+          >
+            Toast description
+          </div>
+        </div>
+        <button
+          class="cursor-pointer text-blue-base"
+          data-radix-toast-announce-alt="Botão para fechar a caixa de aviso"
+          data-radix-toast-announce-exclude=""
+          type="button"
+        >
+          <svg
+            fill="currentColor"
+            height="1em"
+            viewBox="0 0 256 256"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"
+            />
+          </svg>
+        </button>
+      </li>
+    </ol>
+    <span
+      aria-hidden="true"
+      style="position: fixed; border: 0px; width: 1px; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0px, 0px, 0px, 0px); white-space: nowrap; word-wrap: normal;"
+      tabindex="0"
+    />
+  </div>
+</div>
+`;
