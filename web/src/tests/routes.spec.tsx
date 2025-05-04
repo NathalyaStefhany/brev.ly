@@ -8,7 +8,7 @@ import { routesConfig } from '@/routes';
 describe('Routes tests', () => {
   it('should render not found page when route does not exists', () => {
     const router = createMemoryRouter(routesConfig, {
-      initialEntries: ['/not-found'],
+      initialEntries: ['/not-found/route'],
     });
 
     render(<RouterProvider router={router} />);
@@ -33,5 +33,17 @@ describe('Routes tests', () => {
 
     expect(screen.queryByTestId('container-not-found')).not.toBeInTheDocument();
     expect(screen.getByTestId('container-home-page')).toBeInTheDocument();
+  });
+
+  it('should render redirect page', () => {
+    const router = createMemoryRouter(routesConfig, {
+      initialEntries: ['/shortened-link'],
+    });
+
+    render(<RouterProvider router={router} />);
+
+    expect(screen.queryByTestId('container-home-page')).not.toBeInTheDocument();
+    expect(screen.queryByTestId('container-not-found')).not.toBeInTheDocument();
+    expect(screen.getByTestId('container-redirect-page')).toBeInTheDocument();
   });
 });

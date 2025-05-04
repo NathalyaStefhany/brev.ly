@@ -1,10 +1,8 @@
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
-import { randomUUID } from 'node:crypto';
 import { server } from '@/infra/http/server';
-import { db } from '@/infra/db';
-import { schema } from '@/infra/db/schemas';
+import { makeShortenedLink } from '@/tests/factories/make-shortened-link';
 
-describe('Delete shortened link route', () => {
+describe('Delete shortened link route tests', () => {
   beforeAll(async () => {
     await server.ready();
   });
@@ -14,16 +12,11 @@ describe('Delete shortened link route', () => {
   });
 
   it('should return 204 when delete a shortened link', async () => {
-    const shortenedLink = randomUUID().replaceAll('-', '');
-
-    const [shortenedLinkInfo] = await db
-      .insert(schema.shortenedLinks)
-      .values({ originalLink: 'https://test.com', shortenedLink })
-      .returning();
+    const { shortenedLink } = await makeShortenedLink();
 
     const response = await server.inject({
       method: 'DELETE',
-      url: `/shortened-links/${shortenedLinkInfo.id}`,
+      url: `/shortened-links/${shortenedLink}`,
     });
 
     expect(response.statusCode).toBe(204);

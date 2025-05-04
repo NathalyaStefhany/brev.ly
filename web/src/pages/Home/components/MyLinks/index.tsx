@@ -95,7 +95,7 @@ export const MyLinks: React.FC = () => {
         ) : !listOfLinks ? (
           <EmptyState
             icon={<Spinner />}
-            description="Carregando..."
+            description="Carregando links..."
             data-testid="container-link-list-loading"
           />
         ) : listOfLinksIsEmpty ? (

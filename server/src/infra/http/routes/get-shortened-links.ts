@@ -3,9 +3,7 @@ import { unwrapEither } from '@/shared/either';
 import { FastifyPluginAsyncZod } from 'fastify-type-provider-zod';
 import { z } from 'zod';
 
-export const getShortenedLinksRoutes: FastifyPluginAsyncZod = async (
-  server,
-) => {
+export const getShortenedLinksRoute: FastifyPluginAsyncZod = async (server) => {
   server.get(
     '/shortened-links',
     {
@@ -17,20 +15,22 @@ export const getShortenedLinksRoutes: FastifyPluginAsyncZod = async (
           pageSize: z.coerce.number().min(1).optional().default(20),
         }),
         response: {
-          200: z.object({
-            total: z.number(),
-            page: z.number(),
-            pageSize: z.number(),
-            data: z.array(
-              z.object({
-                id: z.string(),
-                originalLink: z.string(),
-                shortenedLink: z.string(),
-                quantityAccesses: z.number(),
-                createdAt: z.date(),
-              }),
-            ),
-          }),
+          200: z
+            .object({
+              total: z.number(),
+              page: z.number(),
+              pageSize: z.number(),
+              data: z.array(
+                z.object({
+                  id: z.string(),
+                  originalLink: z.string(),
+                  shortenedLink: z.string(),
+                  quantityAccesses: z.number(),
+                  createdAt: z.date(),
+                }),
+              ),
+            })
+            .describe('List of links with pagination'),
         },
       },
     },

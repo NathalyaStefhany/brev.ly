@@ -8,7 +8,7 @@ describe('Delete shortened link tests', () => {
   it('should be able to delete a shortened link', async () => {
     const shortenedLinkInfo = await makeShortenedLink();
 
-    const sut = await deleteShortenedLink(shortenedLinkInfo.id);
+    const sut = await deleteShortenedLink(shortenedLinkInfo.shortenedLink);
 
     expect(isRight(sut)).toBeTruthy();
 
@@ -17,7 +17,7 @@ describe('Delete shortened link tests', () => {
     expect(deletedShortenedLinkInfo).toStrictEqual(shortenedLinkInfo);
   });
 
-  it('should not be able to delete a shortened link when id does not exist', async () => {
+  it('should not be able to delete a shortened link when shortened link does not exist', async () => {
     const sut = await deleteShortenedLink('1');
 
     expect(isLeft(sut)).toBeTruthy();

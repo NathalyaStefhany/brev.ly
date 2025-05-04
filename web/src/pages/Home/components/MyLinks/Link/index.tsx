@@ -44,7 +44,7 @@ export const Link: React.FC<LinkProps> = ({
     setIsDeleting(true);
 
     try {
-      await api.delete(`/shortened-links/${id}`);
+      await api.delete(`/shortened-links/${shortenedLink}`);
 
       queryClient.refetchQueries({ queryKey: ['links list'], exact: true });
 
