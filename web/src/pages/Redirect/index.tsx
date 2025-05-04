@@ -1,15 +1,19 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { useLocation, useNavigate } from 'react-router';
 import { api } from '@/service/api';
 import logoIcon from '@/assets/logo-icon.svg';
 import { AxiosError } from 'axios';
+import { queryClient } from '@/service/queryClient';
+import { refetchChannel } from '@/service/broadcastChannel';
 
 type GetOriginalLinkOutput = {
   originalLink: string;
 };
 
 export const Redirect: React.FC = () => {
+  const [rendered, setRendered] = useState(false);
+
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
@@ -36,10 +40,29 @@ export const Redirect: React.FC = () => {
       }
     };
 
-    if (pathname) {
+    const updateAccessQuantity = async (): Promise<void> => {
+      try {
+        await api.patch(`/shortened-links/${pathname.slice(1)}/access`);
+
+        queryClient.refetchQueries({ queryKey: ['links list'], exact: true });
+
+        refetchChannel.postMessage({ queryKey: ['links list'], exact: true });
+      } catch (error) {
+        const err = error as AxiosError;
+
+        if (err.status === 404) {
+          navigate('/url/not-found');
+        }
+      }
+    };
+
+    if (pathname && rendered) {
       getOriginalLink();
+      updateAccessQuantity();
+    } else {
+      setRendered(true);
     }
-  }, [pathname, navigate]);
+  }, [pathname, navigate, rendered]);
 
   return (
     <main

@@ -3,6 +3,7 @@ import { render, screen, waitFor } from '@testing-library/react';
 import AxiosMock from 'axios-mock-adapter';
 import { Redirect } from '@/pages/Redirect';
 import { api } from '@/service/api';
+import { queryClient } from '@/service/queryClient';
 
 const mockNavigate = vi.fn();
 
@@ -100,5 +101,26 @@ describe('Redirect page tests', () => {
     });
 
     expect(mockNavigate).toBeCalledWith('/url/not-found');
+  });
+
+  it('should update access quantity when access the page', async () => {
+    apiMock.onPatch('/shortened-links/test/access').reply(200);
+
+    queryClient.refetchQueries = vi.fn();
+
+    render(<Redirect />);
+
+    await waitFor(() => {
+      expect(
+        apiMock.history.patch.some(
+          ({ url }) => url === '/shortened-links/test/access',
+        ),
+      );
+    });
+
+    expect(queryClient.refetchQueries).toBeCalledWith({
+      queryKey: ['links list'],
+      exact: true,
+    });
   });
 });

@@ -24,8 +24,8 @@ export const Toast: React.FC<ToastProps> = ({
 }) => {
   const color = type === 'error' ? 'danger' : 'blue-base';
 
-  const textColor = `text-${color}`;
-  const backgroundColor = type === 'error' ? '#f1d4da' : '#d6d8ef';
+  const textColor = type === 'error' ? 'text-danger' : 'text-blue-base';
+  const backgroundColor = type === 'error' ? 'bg-[#f1d4da]' : 'bg-[#d6d8ef]';
 
   return (
     <ToastRadix.Provider swipeDirection="right">
@@ -33,7 +33,7 @@ export const Toast: React.FC<ToastProps> = ({
         open={open}
         onOpenChange={onOpenChange}
         duration={duration}
-        className={`max-w-[94vw] w-180 flex flex-row gap-6 items-start justify-start bg-[${backgroundColor}] p-8 rounded-lg shadow-lg shadow-gray-300`}
+        className={`max-w-[94vw] w-180 flex flex-row gap-6 items-start justify-start ${backgroundColor} p-8 rounded-lg shadow-lg shadow-gray-300`}
         data-testid={id}
       >
         <WarningCircle
