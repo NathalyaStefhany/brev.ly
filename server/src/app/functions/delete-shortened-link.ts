@@ -13,13 +13,13 @@ type DeleteShortenedLinkOutput = {
 };
 
 export async function deleteShortenedLink(
-  id: string,
+  shortenedLink: string,
 ): Promise<Either<ShortenedLinkNotAvailable, DeleteShortenedLinkOutput>> {
   const shortenedLinksSchema = schema.shortenedLinks;
 
   const deletedInfo = await db
     .delete(shortenedLinksSchema)
-    .where(eq(shortenedLinksSchema.id, id))
+    .where(eq(shortenedLinksSchema.shortenedLink, shortenedLink))
     .returning();
 
   if (deletedInfo.length) {

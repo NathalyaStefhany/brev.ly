@@ -87,7 +87,7 @@ describe('Link tests', () => {
   });
 
   it('should delete the link', async () => {
-    apiMock.onDelete('/shortened-links/123').reply(200);
+    apiMock.onDelete('/shortened-links/test').reply(200);
 
     queryClient.refetchQueries = vi.fn();
 
@@ -113,7 +113,7 @@ describe('Link tests', () => {
     await waitFor(() => {
       expect(
         apiMock.history.delete.some(
-          ({ url }) => url === '/shortened-links/123',
+          ({ url }) => url === '/shortened-links/test',
         ),
       ).toBeTruthy();
     });
@@ -131,7 +131,7 @@ describe('Link tests', () => {
   });
 
   it('should display toast error when deletion fails', async () => {
-    apiMock.onDelete('/shortened-links/123').reply(400);
+    apiMock.onDelete('/shortened-links/test').reply(400);
 
     render(<Link isFirstLink={false} info={linkInfo} />);
 
@@ -142,7 +142,7 @@ describe('Link tests', () => {
     await waitFor(() => {
       expect(
         apiMock.history.delete.some(
-          ({ url }) => url === '/shortened-links/123',
+          ({ url }) => url === '/shortened-links/test',
         ),
       ).toBeTruthy();
     });

@@ -8,7 +8,7 @@ describe('Delete shortened link tests', () => {
   it('should be able to delete a shortened link', async () => {
     const shortenedLinkInfo = await makeShortenedLink();
 
-    const sut = await deleteShortenedLink(shortenedLinkInfo.id);
+    const sut = await deleteShortenedLink(shortenedLinkInfo.shortenedLink);
 
     expect(isRight(sut)).toBeTruthy();
 

@@ -7,13 +7,13 @@ export const deleteShortenedLinkRoute: FastifyPluginAsyncZod = async (
   server,
 ) => {
   server.delete(
-    '/shortened-links/:id',
+    '/shortened-links/:shortenedLink',
     {
       schema: {
         summary: 'Delete shortened link',
         tags: ['Shortened Links'],
         params: z.object({
-          id: z.string().describe('Shortened link ID'),
+          shortenedLink: z.string(),
         }),
         response: {
           204: z
@@ -22,15 +22,15 @@ export const deleteShortenedLinkRoute: FastifyPluginAsyncZod = async (
           404: z
             .object({ message: z.string() })
             .describe(
-              'No shortened link was found for the ID provided in the URL path.',
+              'No shortened link was found for the shortened link provided in the URL path.',
             ),
         },
       },
     },
     async (request, reply) => {
-      const { id } = request.params;
+      const { shortenedLink } = request.params;
 
-      const result = await deleteShortenedLink(id);
+      const result = await deleteShortenedLink(shortenedLink);
 
       if (isRight(result)) {
         return reply.status(204).send();

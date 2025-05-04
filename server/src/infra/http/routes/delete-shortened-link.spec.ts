@@ -16,14 +16,14 @@ describe('Delete shortened link route', () => {
   it('should return 204 when delete a shortened link', async () => {
     const shortenedLink = randomUUID().replaceAll('-', '');
 
-    const [shortenedLinkInfo] = await db
+    await db
       .insert(schema.shortenedLinks)
       .values({ originalLink: 'https://test.com', shortenedLink })
       .returning();
 
     const response = await server.inject({
       method: 'DELETE',
-      url: `/shortened-links/${shortenedLinkInfo.id}`,
+      url: `/shortened-links/${shortenedLink}`,
     });
 
     expect(response.statusCode).toBe(204);
