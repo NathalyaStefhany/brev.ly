@@ -1,0 +1,23 @@
+services:
+  postgresql-test:
+    image: bitnami/postgresql:latest
+    container_name: postgresql-test
+    platform: linux/amd64
+    restart: unless-stopped
+    ports:
+      - $POSTGRES_PORT:5432
+    environment:
+      - POSTGRES_USER=$POSTGRES_USER
+      - POSTGRES_PASSWORD=$POSTGRES_PASSWORD
+      - POSTGRES_DB=$POSTGRES_DB
+    volumes:
+      - "./docker:/docker-entrypoint-initdb.d"
+    networks:
+      - app
+      - db
+
+networks:
+  app:
+    driver: bridge
+  db:
+    driver: bridge

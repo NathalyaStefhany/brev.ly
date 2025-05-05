@@ -1,0 +1,66 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-blue-base: #2c46b1;
+  --color-blue-dark: #2c4091;
+
+  --color-white: #ffffff;
+  --color-gray-100: #f9f9fb;
+  --color-gray-200: #e4e6ec;
+  --color-gray-300: #cdcfd5;
+  --color-gray-400: #74798b;
+  --color-gray-500: #4d505c;
+  --color-gray-600: #1f2025;
+
+  --color-danger: #b12c4d;
+
+  --default-font-family: 'Open Sans', sans-serif;
+
+  --text-xl: 1.5rem;
+  --text-xl--line-height: 2rem;
+  --text-xl--font-weight: 700;
+
+  --text-lg: 1.125rem;
+  --text-lg--line-height: 1.5rem;
+  --text-lg--font-weight: 700;
+
+  --text-md: 0.875rem;
+  --text-md--line-height: 1.125rem;
+  --text-md--font-weight: 600;
+
+  --text-sm: 0.75rem;
+  --text-sm--line-height: 1rem;
+  --text-sm--font-weight: 400;
+
+  --text-xs: 0.625rem;
+  --text-xs--line-height: 0.875rem;
+  --text-xs--font-weight: 400;
+
+  --spacing: 0.125rem;
+
+  --animate-fade: fade 1s linear infinite;
+
+  @keyframes fade {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0.2;
+    }
+  }
+
+  --animate-border: border 2s linear infinite;
+
+  @keyframes border {
+    0% {
+      background-position: -100% 50%;
+    }
+    100% {
+      background-position: 200% 50%;
+    }
+  }
+}
+
+[data-radix-scroll-area-viewport] > div {
+  display: block !important;
+}

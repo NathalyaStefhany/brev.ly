@@ -1,0 +1,274 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Link tests > should render correctly when it is first link 1`] = `
+<div>
+  <div
+    class="flex flex-row gap-8 md:gap-10 items-center border-t border-gray-200 pt-3 md:pt-4"
+    data-testid="container-123-link"
+    style="border-top-width: 0px;"
+  >
+    <div
+      class="flex flex-col flex-1 gap-2 overflow-hidden"
+    >
+      <a
+        class="text-md text-blue-base truncate"
+        data-testid="link-shortened-link"
+        href="/test"
+        rel="noreferrer"
+        target="_blank"
+      >
+        brev.ly/
+        test
+      </a>
+      <p
+        class="text-sm text-gray-500 truncate"
+        data-testid="text-original-link"
+      >
+        https://test.com
+      </p>
+    </div>
+    <p
+      class="text-sm text-gray-500 whitespace-nowrap"
+      data-testid="text-quantity-accesses"
+    >
+      0
+       acessos
+    </p>
+    <div
+      class="flex flex-row gap-2 items-center"
+    >
+      <button
+        class="cursor-pointer transition-all duration-300 bg-gray-200 border border-gray-200 rounded-sm p-3.5 hover:not-disabled:border-blue-base disabled:opacity-50 disabled:cursor-not-allowed"
+        data-testid="button-copy"
+        type="button"
+      >
+        <svg
+          fill="var(--color-gray-600)"
+          height="1rem"
+          viewBox="0 0 256 256"
+          width="1rem"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"
+          />
+        </svg>
+      </button>
+      <button
+        aria-controls="radix-«r0»"
+        aria-expanded="false"
+        aria-haspopup="dialog"
+        class="cursor-pointer transition-all duration-300 bg-gray-200 border border-gray-200 rounded-sm p-3.5 hover:not-disabled:border-blue-base disabled:opacity-50 disabled:cursor-not-allowed"
+        data-state="closed"
+        data-testid="button-delete"
+        type="button"
+      >
+        <svg
+          fill="var(--color-gray-600)"
+          height="1rem"
+          viewBox="0 0 256 256"
+          width="1rem"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+  <div
+    class="fixed z-3"
+  >
+    <div
+      aria-label="Notifications (F8)"
+      role="region"
+      style="pointer-events: none;"
+      tabindex="-1"
+    >
+      <ol
+        class="z-3 fixed bottom-6 left-1/2 transform -translate-x-1/2 md:bottom-12 md:right-12 md:left-auto md:transform-none md:translate-x-0"
+        tabindex="-1"
+      />
+    </div>
+    <div
+      aria-label="Notifications (F8)"
+      role="region"
+      style="pointer-events: none;"
+      tabindex="-1"
+    >
+      <ol
+        class="z-3 fixed bottom-6 left-1/2 transform -translate-x-1/2 md:bottom-12 md:right-12 md:left-auto md:transform-none md:translate-x-0"
+        tabindex="-1"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Link tests > should render correctly when it is loading 1`] = `
+<div>
+  <div
+    class="flex flex-row gap-8 md:gap-10 items-center border-t border-gray-200 pt-3 md:pt-4"
+    data-testid="container-loading-link"
+    style="border-top-width: 0px;"
+  >
+    <div
+      class="flex flex-col flex-1 gap-2 overflow-hidden"
+    >
+      <div
+        class="h-9 w-2/4 bg-gray-300 rounded animate-pulse"
+      />
+      <div
+        class="h-8 w-3/4 bg-gray-300 rounded animate-pulse"
+      />
+    </div>
+    <div
+      class="h-8 w-27 bg-gray-300 rounded animate-pulse"
+    />
+    <div
+      class="flex flex-row gap-2 items-center"
+    >
+      <div
+        class="h-16 w-16 bg-gray-300 rounded animate-pulse"
+      />
+       
+      <div
+        class="h-16 w-16 bg-gray-300 rounded animate-pulse"
+      />
+    </div>
+  </div>
+  <div
+    class="fixed z-3"
+  >
+    <div
+      aria-label="Notifications (F8)"
+      role="region"
+      style="pointer-events: none;"
+      tabindex="-1"
+    >
+      <ol
+        class="z-3 fixed bottom-6 left-1/2 transform -translate-x-1/2 md:bottom-12 md:right-12 md:left-auto md:transform-none md:translate-x-0"
+        tabindex="-1"
+      />
+    </div>
+    <div
+      aria-label="Notifications (F8)"
+      role="region"
+      style="pointer-events: none;"
+      tabindex="-1"
+    >
+      <ol
+        class="z-3 fixed bottom-6 left-1/2 transform -translate-x-1/2 md:bottom-12 md:right-12 md:left-auto md:transform-none md:translate-x-0"
+        tabindex="-1"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Link tests > should render correctly when it is not first link 1`] = `
+<div>
+  <div
+    class="flex flex-row gap-8 md:gap-10 items-center border-t border-gray-200 pt-3 md:pt-4"
+    data-testid="container-123-link"
+    style="border-top-width: 1px;"
+  >
+    <div
+      class="flex flex-col flex-1 gap-2 overflow-hidden"
+    >
+      <a
+        class="text-md text-blue-base truncate"
+        data-testid="link-shortened-link"
+        href="/test"
+        rel="noreferrer"
+        target="_blank"
+      >
+        brev.ly/
+        test
+      </a>
+      <p
+        class="text-sm text-gray-500 truncate"
+        data-testid="text-original-link"
+      >
+        https://test.com
+      </p>
+    </div>
+    <p
+      class="text-sm text-gray-500 whitespace-nowrap"
+      data-testid="text-quantity-accesses"
+    >
+      0
+       acessos
+    </p>
+    <div
+      class="flex flex-row gap-2 items-center"
+    >
+      <button
+        class="cursor-pointer transition-all duration-300 bg-gray-200 border border-gray-200 rounded-sm p-3.5 hover:not-disabled:border-blue-base disabled:opacity-50 disabled:cursor-not-allowed"
+        data-testid="button-copy"
+        type="button"
+      >
+        <svg
+          fill="var(--color-gray-600)"
+          height="1rem"
+          viewBox="0 0 256 256"
+          width="1rem"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"
+          />
+        </svg>
+      </button>
+      <button
+        aria-controls="radix-«r3»"
+        aria-expanded="false"
+        aria-haspopup="dialog"
+        class="cursor-pointer transition-all duration-300 bg-gray-200 border border-gray-200 rounded-sm p-3.5 hover:not-disabled:border-blue-base disabled:opacity-50 disabled:cursor-not-allowed"
+        data-state="closed"
+        data-testid="button-delete"
+        type="button"
+      >
+        <svg
+          fill="var(--color-gray-600)"
+          height="1rem"
+          viewBox="0 0 256 256"
+          width="1rem"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+  <div
+    class="fixed z-3"
+  >
+    <div
+      aria-label="Notifications (F8)"
+      role="region"
+      style="pointer-events: none;"
+      tabindex="-1"
+    >
+      <ol
+        class="z-3 fixed bottom-6 left-1/2 transform -translate-x-1/2 md:bottom-12 md:right-12 md:left-auto md:transform-none md:translate-x-0"
+        tabindex="-1"
+      />
+    </div>
+    <div
+      aria-label="Notifications (F8)"
+      role="region"
+      style="pointer-events: none;"
+      tabindex="-1"
+    >
+      <ol
+        class="z-3 fixed bottom-6 left-1/2 transform -translate-x-1/2 md:bottom-12 md:right-12 md:left-auto md:transform-none md:translate-x-0"
+        tabindex="-1"
+      />
+    </div>
+  </div>
+</div>
+`;
