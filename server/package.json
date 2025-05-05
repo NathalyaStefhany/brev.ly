@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "tsx watch --env-file .env src/infra/http/server.ts",
+    "build": "tsup-node",
     "lint": "eslint .",
     "lint:staged": "eslint --max-warnings=0",
     "db:generate": "drizzle-kit generate",
@@ -41,6 +42,7 @@
     "drizzle-kit": "^0.31.0",
     "eslint": "^9.25.1",
     "globals": "^16.0.0",
+    "tsup": "^8.4.0",
     "tsx": "^4.19.3",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.31.0",
