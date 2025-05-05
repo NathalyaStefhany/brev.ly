@@ -149,7 +149,3 @@ Run the following command to execute the tests:
 ```bash
 pnpm run test
 ```
-
-<br/>
-
-## 💻 Demo
