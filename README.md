@@ -10,8 +10,7 @@
  <a href="#-about">About</a> •
  <a href="#-features">Features</a> • 
  <a href="#-technologies">Technologies</a> • 
- <a href="#-how-to-run">How to Run</a> • 
- <a href="#-demo">Demo</a>
+ <a href="#-how-to-run">How to Run</a>
 </p>
 
 <br/>
@@ -117,6 +116,8 @@ pnpm run docker:test
 ```bash
 pnpm run test
 ```
+
+<br/>
 
 ### Web App
 
