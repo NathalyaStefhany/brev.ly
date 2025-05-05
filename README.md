@@ -44,6 +44,7 @@ Brev.ly is a FullStack URL shortening application, developed as part of my **Pó
 - [Vite](https://vite.dev/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
+- [Sentry](https://sentry.io/welcome/)
 
 <br/>
 
@@ -66,6 +67,88 @@ Brev.ly is a FullStack URL shortening application, developed as part of my **Pó
 <br/>
 
 ## 📦 How to Run
+
+To run the application, make sure you have [Docker](https://www.docker.com/), [Docker Compose](https://docs.docker.com/compose/) and [pnpm](https://pnpm.io/) installed.
+
+### Server
+
+1. Navigate to the server folder:
+
+```bash
+cd server
+```
+
+2. Install the dependencies using pnpm:
+
+```bash
+pnpm install
+```
+
+3. Build and start the containers:
+
+```bash
+docker-compose up --build -d
+```
+
+4. Then, run the following inside the app container:
+
+```bash
+pnpm run db:migrate
+```
+
+These command apply the database migrations using Drizzle and PostgreSQL.
+
+Your server should now be running on the defined port (default is 3333).
+
+<hr />
+
+To run the tests, follow these steps:
+
+1. Make sure you have the .env.test file configured with the correct environment variables for testing.
+
+2. Run the following command to start the Docker containers for testing:
+
+```bash
+pnpm run docker:test
+```
+
+3. Once the containers are up and running, execute the following command to run the tests:
+
+```bash
+pnpm run test
+```
+
+### Web App
+
+To run the front-end of the application, follow these steps:
+
+1. Navigate to the web folder:
+
+```bash
+cd web
+```
+
+2. Install the dependencies using pnpm:
+
+```bash
+pnpm install
+```
+
+3. Then, run the development server:
+
+```bash
+pnpm run dev
+```
+
+This will start the front-end and you will be able to access the application locally. By default, it will be available on port 4000, unless configured otherwise.
+
+<hr />
+
+Run the following command to execute the tests:
+
+```bash
+pnpm run test
+```
 
 <br/>
 
