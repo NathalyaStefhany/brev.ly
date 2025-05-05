@@ -55,6 +55,7 @@ Brev.ly is a FullStack URL shortening application, developed as part of my **Pó
 - [PostgreSQL](https://www.postgresql.org/)
 - [Drizzle](https://orm.drizzle.team/)
 - [Scalar](https://scalar.com/)
+- [Cloudflare](https://www.cloudflare.com/)
 
 <br/>
 
