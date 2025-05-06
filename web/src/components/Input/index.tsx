@@ -90,7 +90,7 @@ export const Input: React.FC<InputProps> = ({
       {fixedPlaceholder && (
         <span
           data-testid={`${id}-fixed-placeholder`}
-          className="absolute top-18.5 left-8.5 text-md text-gray-400 font-normal z-1"
+          className="absolute top-18.5 left-8.5 text-md text-gray-400 font-normal z-1 pointer-events-none"
         >
           {fixedPlaceholder}
         </span>
