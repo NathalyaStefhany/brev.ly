@@ -8,5 +8,5 @@ export const envSchema = z.object({
   VITE_SENTRY_DSN: z.string().url(),
   VITE_SENTRY_AUTH_TOKEN: z.string(),
 
-  VITE_API_URL: z.string().url(),
+  VITE_BACKEND_URL: z.string().url(),
 });
