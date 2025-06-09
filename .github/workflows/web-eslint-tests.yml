@@ -18,7 +18,7 @@ jobs:
       VITE_SENTRY_DSN: ${{secrets.VITE_SENTRY_DSN}}
       VITE_SENTRY_AUTH_TOKEN: ${{secrets.VITE_SENTRY_AUTH_TOKEN}}
       
-      VITE_API_URL: ${{secrets.VITE_API_URL}}
+      VITE_BACKEND_URL: ${{secrets.VITE_API_URL}}
 
     steps:
       - name: Checkout repository
